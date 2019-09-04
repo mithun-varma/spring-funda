@@ -12,6 +12,7 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +27,7 @@ public class CustomerController {
     private static final Logger logger = Logger.getLogger(CustomerController.class);
 
     private Map<String, Customer> customers = null;
-   
+
     public CustomerController() {
         customers = new HashMap<>();
     }
@@ -50,6 +51,25 @@ public class CustomerController {
         model.addAttribute("customer", customer);
         customers.put(customer.getEmail(), customer);
         return "custSaveSuccess";
+    }
+
+    @RequestMapping(value = "/customer/signup", method = RequestMethod.POST)
+    public String addCustomer(@Valid Customer customer, BindingResult result) {
+        System.out.println("has come here");
+        if (result.hasErrors()) {
+            return "signUpForm";
+        } else {
+            return "Done";
+        }
+
+    }
+
+    @RequestMapping(value = "/customer/singupView", method = RequestMethod.GET)
+    public String displayCustomerForm(ModelMap model) {
+
+        model.addAttribute("customer", new Customer());
+        return "signUpForm";
+
     }
 
 }

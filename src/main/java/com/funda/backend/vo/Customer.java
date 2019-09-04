@@ -22,6 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class Customer {
 
+    @NotEmpty
     @Size(min = 2, max = 30)
     private String name;
 
@@ -35,7 +36,7 @@ public class Customer {
     private Integer age;
 
     @NotNull
-    private Gender gender;
+    private String gender;
 
     @DateTimeFormat(pattern = "MM/dd/yyyy")
     @NotNull
@@ -73,11 +74,11 @@ public class Customer {
         this.age = age;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

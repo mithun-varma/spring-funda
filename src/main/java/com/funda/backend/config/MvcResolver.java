@@ -5,8 +5,6 @@
  */
 package com.funda.backend.config;
 
-import com.funda.backend.vo.Phone;
-import com.funda.propertyeditors.PhoneNumberEditor;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
@@ -37,7 +35,6 @@ public class MvcResolver extends WebMvcConfigurationSupport {
             SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd");
             propertyEditorRegistry.registerCustomEditor(Date.class,
                     new CustomDateEditor(dateFormatter, true));
-            propertyEditorRegistry.registerCustomEditor(Phone.class, new PhoneNumberEditor());
         });
         return initializer;
     }

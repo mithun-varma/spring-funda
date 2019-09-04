@@ -5,10 +5,14 @@
  */
 package com.funda.backend.controllers;
 
+import com.funda.backend.vo.UserForm;
 import com.funda.vo.MailTemplate;
+import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -47,6 +51,23 @@ public class HelloController {
         model.put("name", name);
         model.put("password", password);    
         return "welcome";
+    }
+    
+    @RequestMapping("/userForm")
+    public String userForm(ModelMap model) {
+        model.put("userForm", new UserForm());
+        return "userForm";
+    }
+    
+    
+    @PostMapping(path = "/formSubmit")
+    public String submitForm(@Valid UserForm form,BindingResult result, Model model) {
+        if (result.hasErrors()) {
+            System.out.println("has errors");
+            return "userForm";
+        }
+        model.addAttribute("message", "Valid form");
+        return "userForm";
     }
 
 }

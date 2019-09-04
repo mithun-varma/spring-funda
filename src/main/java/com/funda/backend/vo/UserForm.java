@@ -5,10 +5,25 @@
  */
 package com.funda.backend.vo;
 
+import com.funda.backend.annotations.FieldsMatch;
+
 /**
  *
  * @author phanic
  */
+
+@FieldsMatch.List(value = {
+    @FieldsMatch(
+      field = "password", 
+      fieldMatch = "verifyPassword", 
+      message = "Passwords do not match!"
+    ), 
+    @FieldsMatch(
+      field = "email", 
+      fieldMatch = "verifyEmail", 
+      message = "Email addresses do not match!"
+    )
+})
 public class UserForm {
     
     private String email;

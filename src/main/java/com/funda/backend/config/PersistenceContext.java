@@ -27,5 +27,5 @@ public class PersistenceContext {
         dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
  
         return new HikariDataSource(dataSourceConfig);
-    }
+}
 }

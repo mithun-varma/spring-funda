@@ -38,8 +38,9 @@ public class EmployeeController {
     @Qualifier("employeeValidator")        
     Validator validator;
     
-    @InitBinder
+    @InitBinder("employee")
     public void initBinder(WebDataBinder binder) {
+        System.out.println("came here");
         binder.setValidator(validator);
         //binder.registerCustomEditor(Phone.class, new PhoneNumberEditor());
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -67,7 +68,7 @@ public class EmployeeController {
             @ModelAttribute("employee") @Validated Employee employee,
             BindingResult bindingResult, Model model) {
         System.out.println("emp doj is "+employee.getDoj());
-        System.out.println("emp doj is "+employee.getPhone());
+        System.out.println("emp phone is "+employee.getPhone());
         if (bindingResult.hasErrors()) {
             logger.info("Returning empSave.jsp page");
             return "empSave";

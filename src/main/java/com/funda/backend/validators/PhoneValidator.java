@@ -16,7 +16,7 @@ import javax.validation.ConstraintValidatorContext;
 public class PhoneValidator implements ConstraintValidator<Phone, String> {
 
     @Override
-    public void initialize(Phone paramA) {
+    public void initialize(Phone param) {
         
     }
 
