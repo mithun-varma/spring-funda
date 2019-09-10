@@ -7,10 +7,11 @@ package com.funda.backend.controllers;
 
 import com.funda.backend.vo.UserForm;
 import com.funda.vo.MailTemplate;
+import java.util.ArrayList;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,13 +62,16 @@ public class HelloController {
     
     
     @PostMapping(path = "/formSubmit")
-    public String submitForm(@Valid UserForm form,BindingResult result, Model model) {
+    public String submitForm(@Valid UserForm form,BindingResult result, ModelMap model) {
         if (result.hasErrors()) {
-            System.out.println("has errors");
+            List<String> errors = new ArrayList<>();
+            result.getAllErrors().stream().forEach(error -> errors.add(error.getDefaultMessage()));
+            model.addAttribute("errors", errors);      
+            model.addAttribute("message", "welcome");
             return "userForm";
         }
         model.addAttribute("message", "Valid form");
         return "userForm";
     }
-
+    
 }

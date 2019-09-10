@@ -18,6 +18,6 @@ import org.springframework.stereotype.Component;
 public class CustomPhoneEditorRegistrar implements PropertyEditorRegistrar{
     @Override
     public void registerCustomEditors(PropertyEditorRegistry per) {
-        per.registerCustomEditor(Phone.class, new PhoneNumberEditor());
+        per.registerCustomEditor(Phone.class, new CustomPhoneNumberEditor());
     }
 }

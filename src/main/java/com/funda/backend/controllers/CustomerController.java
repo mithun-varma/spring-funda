@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -34,7 +35,6 @@ public class CustomerController {
 
     @RequestMapping(value = "/cust/save", method = RequestMethod.GET)
     public String saveCustomerPage(Model model) {
-        logger.info("Returning custSave.jsp page");
         model.addAttribute("customer", new Customer());
         return "custSave";
     }
@@ -44,10 +44,8 @@ public class CustomerController {
             @Valid Customer customer,
             BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            logger.info("Returning custSave.jsp page");
             return "custSave";
         }
-        logger.info("Returning custSaveSuccess.jsp page");
         model.addAttribute("customer", customer);
         customers.put(customer.getEmail(), customer);
         return "custSaveSuccess";
@@ -55,7 +53,6 @@ public class CustomerController {
 
     @RequestMapping(value = "/customer/signup", method = RequestMethod.POST)
     public String addCustomer(@Valid Customer customer, BindingResult result) {
-        System.out.println("has come here");
         if (result.hasErrors()) {
             return "signUpForm";
         } else {

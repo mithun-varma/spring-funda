@@ -40,7 +40,6 @@ public class EmployeeController {
     
     @InitBinder("employee")
     public void initBinder(WebDataBinder binder) {
-        System.out.println("came here");
         binder.setValidator(validator);
         //binder.registerCustomEditor(Phone.class, new PhoneNumberEditor());
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");

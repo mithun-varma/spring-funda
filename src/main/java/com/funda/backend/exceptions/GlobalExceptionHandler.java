@@ -18,7 +18,6 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
  *
  * @author phanic
  */
-
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
@@ -31,24 +30,24 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
         return ResponseEntity.badRequest().body(responseDTO);
     }
-    
+
     @ExceptionHandler(RuntimeException.class)
     public final ResponseEntity<Object> handlerRunTimeError(Exception ex, WebRequest request) {
-        System.out.println("came to constaint validation handler "+ex);
+        System.out.println("came to constaint validation handler " + ex);
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
         responseDTO.setMessage(ex.getMessage());
 
         return ResponseEntity.badRequest().body(responseDTO);
     }
-    
+
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
-        System.out.println("came to exception"+ex);
+        System.out.println("came to exception" + ex);
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
         responseDTO.setMessage(ex.getMessage());
         return new ResponseEntity(responseDTO, HttpStatus.INTERNAL_SERVER_ERROR);
     }
-    
+ 
 }

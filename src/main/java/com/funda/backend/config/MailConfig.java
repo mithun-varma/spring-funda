@@ -5,7 +5,6 @@
  */
 package com.funda.backend.config;
 
-import com.funda.backend.vo.Employee;
 import com.funda.vo.MailTemplate;
 import javax.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +30,15 @@ public class MailConfig {
     
     @Autowired
     Environment env;
+    
+    @Autowired
+    MyAppProperties appProps;
 
     @PostConstruct
     public void testMailProps() {
         System.out.println("env props "+env.getProperty("mail.hostname")+" "+env.getProperty("mail.port")
-            +" "+env.getProperty("active.env")+" ");
-        System.out.println("the props are "+hostName+" "+port+" "+from);
+            +" "+env.getProperty("active.env")+" "+env.getProperty("mail.app.trade-start-date"));
+        System.out.println("the props are "+hostName+" "+port+" "+from+" app props "+getAppProps().getTradeStartDate());
     }
 
     public String getHostName() {
@@ -77,4 +79,10 @@ public class MailConfig {
         return new MailTemplate();
     }
     
+    @Bean
+    @ConfigurationProperties(prefix = "mail.app") //have to specify 
+    public MyAppProperties getAppProps(){
+        return new MyAppProperties();
+    }
+      
 }

@@ -6,7 +6,7 @@
 package com.funda.backend.controllers;
 
 import com.funda.backend.vo.Phone;
-import com.funda.propertyeditors.PhoneNumberEditor;
+import com.funda.propertyeditors.CustomPhoneNumberEditor;
 import com.funda.vo.Student;
 import javax.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
@@ -31,7 +31,7 @@ public class StudentController {
     public void initBinder(WebDataBinder dataBinder) {
         StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
         dataBinder.registerCustomEditor(String.class, stringTrimmerEditor);
-        dataBinder.registerCustomEditor(Phone.class, new PhoneNumberEditor());
+        //dataBinder.registerCustomEditor(Phone.class, new CustomPhoneNumberEditor());
     }
 
     @GetMapping(path = "/home")

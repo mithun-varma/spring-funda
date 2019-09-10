@@ -5,12 +5,15 @@
  */
 package com.funda.backend.config;
 
+import com.funda.backend.methodargresolvers.HeaderVersionArgumentResolver;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.web.bind.support.ConfigurableWebBindingInitializer;
+import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 /**
@@ -37,5 +40,11 @@ public class MvcResolver extends WebMvcConfigurationSupport {
                     new CustomDateEditor(dateFormatter, true));
         });
         return initializer;
+    }
+    
+    @Override
+    public void addArgumentResolvers(
+      List<HandlerMethodArgumentResolver> argumentResolvers) {
+        argumentResolvers.add(new HeaderVersionArgumentResolver());
     }
 }

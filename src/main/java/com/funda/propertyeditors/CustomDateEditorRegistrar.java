@@ -10,6 +10,7 @@ import java.util.Date;
 import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.PropertyEditorRegistry;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Component;
 
 /**
@@ -17,6 +18,7 @@ import org.springframework.stereotype.Component;
  * @author phanic
  */
 @Component
+@EnableConfigurationProperties
 public class CustomDateEditorRegistrar implements PropertyEditorRegistrar{
     @Override
     public void registerCustomEditors(PropertyEditorRegistry per) {

@@ -22,7 +22,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  */
 public class Customer {
 
-    @NotEmpty
+    @NotEmpty(message = "{name.notemtpy}")
     @Size(min = 2, max = 30)
     private String name;
 

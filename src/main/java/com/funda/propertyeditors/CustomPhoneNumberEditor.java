@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * @author phanic
  */
 @Component
-public class PhoneNumberEditor extends PropertyEditorSupport{
+public class CustomPhoneNumberEditor extends PropertyEditorSupport{
 
     @Override
     public void setAsText(String text){
