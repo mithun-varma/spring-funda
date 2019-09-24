@@ -5,8 +5,6 @@
  */
 package com.funda.backend.controllers;
 
-import com.funda.backend.vo.Phone;
-import com.funda.propertyeditors.CustomPhoneNumberEditor;
 import com.funda.vo.Student;
 import javax.validation.Valid;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;

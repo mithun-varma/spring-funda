@@ -6,13 +6,17 @@
 package com.funda.backend.config;
 
 import com.funda.backend.vo.Employee;
+import com.funda.backend.vo.ExoticType;
+import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
+import java.beans.PropertyEditor;
+import java.beans.PropertyEditorSupport;
+import java.util.HashMap;
+import java.util.Map;
 import javax.annotation.PostConstruct;
+import org.springframework.beans.factory.config.CustomEditorConfigurer;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;

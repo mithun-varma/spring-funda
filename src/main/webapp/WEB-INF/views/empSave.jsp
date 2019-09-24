@@ -4,6 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib uri="http://www.springframework.org/tags/form"
            prefix="springForm"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -17,7 +18,7 @@
         </style>
     </head>
     <body>
-
+        <P><spring:message code="text.mainPage"/></p>
         <springForm:form method="POST" modelAttribute="employee" action="save.do">
             <table>
                 <tr>
@@ -49,6 +50,11 @@
                     <td>Employee doj</td>
                     <td><springForm:input path="doj" /></td>
                     <td><springForm:errors path="doj" cssClass="error" /></td>
+                </tr>
+                <tr>
+                    <td>Exotic type</td>
+                    <td><springForm:input path="exoticType" /></td>
+                    <td><springForm:errors path="exoticType" cssClass="error" /></td>
                 </tr>
                 <tr>
                     <td colspan="3"><input type="submit" value="Save"></td>

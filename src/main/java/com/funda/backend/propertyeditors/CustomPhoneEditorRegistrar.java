@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.propertyeditors;
+package com.funda.backend.propertyeditors;
 
 import com.funda.backend.vo.Phone;
 import org.springframework.beans.PropertyEditorRegistrar;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  *
  * @author phanic
  */
-@Component
+@Component(value = "phoneRegistrar")
 public class CustomPhoneEditorRegistrar implements PropertyEditorRegistrar{
     @Override
     public void registerCustomEditors(PropertyEditorRegistry per) {

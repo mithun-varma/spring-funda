@@ -6,9 +6,13 @@
 package com.funda.backend.controllers;
 
 import com.funda.backend.vo.Employee;
+import com.funda.backend.vo.ExoticType;
+import com.funda.backend.propertyeditors.CustomPhoneEditorRegistrar;
+import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
+import org.springframework.beans.PropertyEditorRegistrar;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -38,16 +42,25 @@ public class EmployeeController {
     @Qualifier("employeeValidator")        
     Validator validator;
     
+    @Autowired
+    @Qualifier("phoneRegistrar")
+    private PropertyEditorRegistrar customPropertyEditorRegistrar;
+
+    public EmployeeController() {
+        emps = new HashMap<>();
+    }
+    
     @InitBinder("employee")
     public void initBinder(WebDataBinder binder) {
         binder.setValidator(validator);
         //binder.registerCustomEditor(Phone.class, new PhoneNumberEditor());
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         //binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
-    }
-
-    public EmployeeController() {
-        emps = new HashMap<>();
+        //binder.registerCustomEditor(ExoticType.class, new ExoticTypeMyEditor());
+        //the other way
+        /*if(customPropertyEditorRegistrar != null){
+            customPropertyEditorRegistrar.registerCustomEditors(binder);
+        }*/
     }
 
     @ModelAttribute("employee")
@@ -68,6 +81,8 @@ public class EmployeeController {
             BindingResult bindingResult, Model model) {
         System.out.println("emp doj is "+employee.getDoj());
         System.out.println("emp phone is "+employee.getPhone());
+        System.out.println("emp phone is "+employee.getExoticType().getExoticTypeName()+" "+employee.getExoticType().getValue()
+        +" "+employee.getExoticType().getName());
         if (bindingResult.hasErrors()) {
             logger.info("Returning empSave.jsp page");
             return "empSave";

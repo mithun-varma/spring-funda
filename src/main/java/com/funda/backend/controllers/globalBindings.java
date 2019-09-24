@@ -5,6 +5,8 @@
  */
 package com.funda.backend.controllers;
 
+import com.funda.backend.vo.ExoticType;
+import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -17,6 +19,6 @@ import org.springframework.web.bind.annotation.InitBinder;
 public class globalBindings {
     @InitBinder
     public void globalBind(WebDataBinder webBinder){
-        
+        webBinder.registerCustomEditor(ExoticType.class, new ExoticTypeMyEditor());
     }
 }

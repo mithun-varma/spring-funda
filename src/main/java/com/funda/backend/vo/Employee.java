@@ -19,6 +19,7 @@ public class Employee {
     private String role;
     private Phone phone;
     private Date doj;
+    private ExoticType exoticType;
     
     public Employee(String name, double salary){
         this.name = name;
@@ -76,6 +77,15 @@ public class Employee {
     public void setDoj(Date doj) {
         this.doj = doj;
     }
+
+    public ExoticType getExoticType() {
+        return exoticType;
+    }
+
+    public void setExoticType(ExoticType exoticType) {
+        this.exoticType = exoticType;
+    }
+    
     
     
 }
