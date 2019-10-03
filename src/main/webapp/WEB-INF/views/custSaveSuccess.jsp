@@ -17,6 +17,11 @@
 <strong>Customer Age:${customer.age}</strong><br>
 <strong>Customer Gender:${customer.gender}</strong><br>
 <strong>Customer Birthday:<fmt:formatDate value="${customer.birthday}" type="date" /></strong><br>
-
+<form action="/logout" method="post">
+     <input type="hidden"
+        name="${_csrf.parameterName}"
+        value="${_csrf.token}"/>
+  <input type="submit" value="Logout">
+</form>
 </body>
 </html>

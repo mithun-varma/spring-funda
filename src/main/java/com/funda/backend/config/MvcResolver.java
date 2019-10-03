@@ -5,6 +5,9 @@
  */
 package com.funda.backend.config;
 
+import com.funda.backend.converters.EmployeeConverter;
+import com.funda.backend.converters.IdToEntityConverterFactory;
+import com.funda.backend.converters.StringToEnumConverterFactory;
 import com.funda.backend.methodargresolvers.HeaderVersionArgumentResolver;
 import java.text.SimpleDateFormat;
 import java.util.Date;

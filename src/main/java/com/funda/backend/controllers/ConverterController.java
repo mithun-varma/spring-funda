@@ -50,10 +50,10 @@ public class ConverterController {
      }
     
     @GetMapping("string-to-entity")
-     public Map<String ,String > getEntity(@RequestParam("id") Item order) {
+     public Map<String ,String > getEntity(@RequestParam("id") Entity order) {
          Map<String,String> response = new HashMap<>();
          try {
-             System.out.println(" the conversion for emp "+order.getItemName());
+             System.out.println(" the conversion for emp "+order);
             response.put("status", "success");
         } catch (Exception e) {
             logger.error("Error occurred while trying to process api request", e);
@@ -74,6 +74,21 @@ public class ConverterController {
             response.put("status", "success");
         } catch (Exception e) {
             e.printStackTrace();
+            logger.error("Error occurred while trying to process api request", e);
+            response.put("status", "fail");
+        }
+
+        return response;
+     }
+     
+      @GetMapping("string-to-enum")
+     public Map<String ,String > testEnum(@RequestParam("id") Modes mode) {
+         Map<String,String> response = new HashMap<>();
+         try {
+             //Enum m = (Enum)mode;
+             System.out.println(" the conversion for enum "+mode);
+            response.put("status", "success");
+        } catch (Exception e) {
             logger.error("Error occurred while trying to process api request", e);
             response.put("status", "fail");
         }

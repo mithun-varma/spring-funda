@@ -45,7 +45,13 @@ public class HelloController {
         return "login";
     }
     
-    
+    @RequestMapping("/auth_login")
+    public String customLogin(ModelMap model) {
+        System.out.println(" default login "+mailTemplate.getHostName()+" "+mailTemplate.getPort());	
+        model.addAttribute("welcome_message", "Welcome come to Spring platform Portal");
+        return "customLogin";
+    }
+   
     @PostMapping(path = "/login")
     public String register(ModelMap model, @RequestParam String name, @RequestParam String password) {
         System.out.println("came here usr "+name+" pwd "+password);

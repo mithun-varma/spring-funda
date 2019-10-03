@@ -9,6 +9,7 @@ import com.funda.backend.vo.DependsOnExoticType;
 import com.funda.backend.propertyeditors.CustomPhoneNumberEditor;
 import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
 import java.beans.PropertyEditor;
+import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Min;
 import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Validated
-class ValidateParametersController {
+public class ValidateParametersController {
     
     @Autowired
     private ApplicationContext context;
@@ -41,7 +42,15 @@ class ValidateParametersController {
 
     @GetMapping("/validateRequestParameter")
     ResponseEntity<String> validateRequestParameter(
-            @RequestParam("param") @Min(5) int param) {
+            @RequestParam("param") @Min(5) int param ,HttpSession session) {
+        String id = session.getId();
+        if(session.getAttribute(id) != null){
+            System.out.println("session is "+session.getAttribute(id));
+        }else{
+            System.out.println("creating session ");
+            session.setAttribute(session.getId(), param);
+        }
+
         return ResponseEntity.ok("valid");
     }
     

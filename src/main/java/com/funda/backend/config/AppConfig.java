@@ -6,14 +6,7 @@
 package com.funda.backend.config;
 
 import com.funda.backend.vo.Employee;
-import com.funda.backend.vo.ExoticType;
-import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
-import java.beans.PropertyEditor;
-import java.beans.PropertyEditorSupport;
-import java.util.HashMap;
-import java.util.Map;
 import javax.annotation.PostConstruct;
-import org.springframework.beans.factory.config.CustomEditorConfigurer;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -39,7 +32,8 @@ public class AppConfig {
 
     @PostConstruct
     public void checkInit() {
-        System.out.println("the employee is " + employee.getName());
+        String name = employee != null ? employee.getName() : "testing may be";
+        System.out.println("the employee is " + name);
     }
 
     public Employee getEmployee() {

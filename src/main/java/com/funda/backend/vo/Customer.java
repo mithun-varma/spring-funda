@@ -38,7 +38,7 @@ public class Customer {
     @NotNull
     private String gender;
 
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    //@DateTimeFormat(pattern = "dd/MM/yyyy")
     @NotNull
     @Past
     private Date birthday;

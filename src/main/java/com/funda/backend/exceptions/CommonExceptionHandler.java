@@ -44,4 +44,16 @@ public class CommonExceptionHandler {
         responseDTO.setMessage(e.getMessage());
         return responseDTO;
   }
+  
+  @ExceptionHandler(Exception.class)
+  @ResponseStatus(HttpStatus.BAD_REQUEST)
+  @ResponseBody
+  ResponseDTO generalException(
+      Exception e) {
+        System.out.println("came to generalException " + e);
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
+        responseDTO.setMessage(e.getMessage());
+        return responseDTO;
+  }
 }

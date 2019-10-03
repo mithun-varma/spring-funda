@@ -21,3 +21,8 @@ INSERT INTO billionaires (first_name, last_name, career) VALUES
   ('Aliko', 'Dangote', 'Billionaire Industrialist'),
   ('Bill', 'Gates', 'Billionaire Tech Entrepreneur'),
   ('Folrunsho', 'Alakija', 'Billionaire Oil Magnate');
+
+INSERT INTO country (name) VALUES ('India');
+INSERT INTO country (name) VALUES ('Brazil');
+INSERT INTO country (name) VALUES ('USA');
+INSERT INTO country (name) VALUES ('Italy');

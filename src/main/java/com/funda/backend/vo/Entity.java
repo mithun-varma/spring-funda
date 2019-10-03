@@ -10,6 +10,10 @@ package com.funda.backend.vo;
  * @author phanic
  */
 public abstract class Entity {
+
+    public String getId() {
+        return id;
+    }
    private final String id;
 
    public Entity (String id) {

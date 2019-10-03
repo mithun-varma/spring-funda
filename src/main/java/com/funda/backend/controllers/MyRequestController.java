@@ -26,7 +26,7 @@ public class MyRequestController {
     @Autowired
     private MyApiReqService apiRequestService; 
     
-    private static final Logger logger = Logger.getLogger(MyApiReqService.class);
+    private static final Logger logger = Logger.getLogger(MyRequestController.class);
     
      @RequestMapping(value = "/", produces = MediaType.APPLICATION_JSON_VALUE)
      public Map<String ,String > getHome() {

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.config;
+package com.funda.backend.converters;
 
 import com.funda.backend.services.EntityService;
 import com.funda.backend.vo.Entity;
