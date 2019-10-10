@@ -27,4 +27,9 @@ public class JPAGeneralEntityController {
     public void saveStudentAndGuide(){
         jpaServjpaServiceice.saveStudentAndGuide();
     }
+    
+    @GetMapping("/testSingleTableInheritance")
+    public void testSingleTableInhertance(){
+        jpaServjpaServiceice.testSingleTableInhertance();
+    }
 }

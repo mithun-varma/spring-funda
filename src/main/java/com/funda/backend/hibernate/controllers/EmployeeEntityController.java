@@ -8,7 +8,7 @@ package com.funda.backend.hibernate.controllers;
 import com.funda.backend.exceptions.ResourceNotFoundException;
 import com.funda.backend.hibernate.entities.Employee;
 import com.funda.backend.hibernate.entities.Person;
-import com.funda.backend.repositories.EmployeeRepository;
+import com.funda.backend.hibernate.repositories.EmployeeRepository;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

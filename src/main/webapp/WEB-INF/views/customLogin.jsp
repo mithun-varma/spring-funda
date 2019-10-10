@@ -28,6 +28,12 @@
                 <i class="failed">Sorry! You entered invalid username/password.</i>
                 
             </c:if>
+                
+            <c:if test="${param.logout != null}">
+    		<p style='color:blue'>
+    			You have been logged out.
+    		</p>
+            </c:if>
 
             <p>
                 User name: <input type="text" name="username" />

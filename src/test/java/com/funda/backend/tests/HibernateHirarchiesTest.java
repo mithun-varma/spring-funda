@@ -6,16 +6,18 @@
 package com.funda.backend.tests;
 
 import com.funda.backend.DemoApplication;
+import com.funda.backend.hibernate.entities.Book;
 import com.funda.backend.hibernate.entities.Employee;
-import com.funda.backend.repositories.EmployeeRepository;
-import static org.assertj.core.api.Assertions.assertThat;
+import com.funda.backend.hibernate.entities.Pen;
+import com.funda.backend.hibernate.repositories.EmployeeRepository;
+import javax.sql.DataSource;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -34,6 +36,9 @@ public class HibernateHirarchiesTest {
     @Autowired
     private TestEntityManager entityManager;
     
+    @Autowired
+    private DataSource dataSource;
+    
     @Before
     public void setUp() {
         System.out.println("ready to save");    
@@ -46,17 +51,35 @@ public class HibernateHirarchiesTest {
     }
 
     
-    @Test
+    /*@Test
     public void getEmployeesCount(){
         int count = employeeRepository.findAll().size();
         System.out.println("the count is "+count);
         // then
         assertThat(count).isGreaterThan(0);
+    }*/
+    
+    @Test
+    public void testSingleTableInheritance(){
+        Book book = new Book();
+        book.setName(" my dairies");
+        book.setAuthor("phani");
+        
+        Pen pen = new Pen();
+        pen.setName("reynolds");
+        pen.setColor("white");
+        
+        entityManager.persist(book);
+        entityManager.persist(pen);
+        
+
+        
     }
     
     @Test
-    public void testNPlusOneProblem(){
-        
+    public void hikariConnectionPoolIsConfigured() {
+        //assertEquals("com.zaxxer.hikari.HikariDataSource", dataSource.getClass().getName());
+        System.out.println("the ds is "+dataSource.getClass().getName());
     }
  
 }

@@ -89,7 +89,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 //        .and().sessionManagement().maximumSessions(1).maxSessionsPreventsLogin(true).expiredUrl("/");
 //    }
      protected void configure(HttpSecurity http) throws Exception {
-            http.csrf().disable().headers().frameOptions().sameOrigin()
+            http
+            .csrf().disable()
+            .headers().frameOptions().sameOrigin()
             .and().authorizeRequests()
             //.antMatchers("/home","/emp/**").permitAll()                    
             .antMatchers("/cust/**").access("hasRole('ADMIN')")
@@ -104,10 +106,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll()
             .and()
             .logout()
+            //.logoutSuccessUrl("/auth_login?logout")(not needed default behaviour)
             .and()
             .httpBasic()
-            .authenticationEntryPoint(getBasicAuthEntryPoint())
-            .and().sessionManagement().maximumSessions(3).maxSessionsPreventsLogin(true).expiredUrl("/");
+            .and()
+            .sessionManagement()
+                //.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .maximumSessions(3).maxSessionsPreventsLogin(true).expiredUrl("/");
 
     }
      

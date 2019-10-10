@@ -5,8 +5,12 @@
  */
 package com.funda.backend.hibernate.services;
 
+import com.funda.backend.hibernate.entities.Book;
 import com.funda.backend.hibernate.entities.Guide;
+import com.funda.backend.hibernate.entities.MyProduct;
+import com.funda.backend.hibernate.entities.Pen;
 import com.funda.backend.hibernate.entities.Student;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
@@ -52,6 +56,34 @@ public class JPAService {
             enitityManager.persist(student);
             txn.commit();
             
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+    }
+    public void testSingleTableInhertance(){
+        
+        try{
+            
+            EntityManager enitityManager = em.createEntityManager();
+            EntityTransaction txn = enitityManager.getTransaction();
+            
+            txn.begin();
+            
+             Book book = new Book();
+            book.setName(" my dairies");
+            book.setAuthor("phani");
+
+            Pen pen = new Pen();
+            pen.setName("reynolds");
+            pen.setColor("white");
+            enitityManager.persist(book);
+            enitityManager.persist(pen);
+            
+            txn.commit();
+            List<Book> books = enitityManager.createQuery("SELECT b FROM Book b", Book.class).getResultList();
+            List products = enitityManager.createQuery("SELECT b FROM MyProduct b" ,MyProduct.class).getResultList();
+            System.out.println("the books obj "+books.get(0).getAuthor()+" size "+products.size());
+
         }catch(Exception ex){
             ex.printStackTrace();
         }

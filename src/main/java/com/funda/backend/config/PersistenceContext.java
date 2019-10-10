@@ -5,11 +5,19 @@
  */
 package com.funda.backend.config;
 
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
+import java.beans.PropertyVetoException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.sql.DataSource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.core.env.Environment;
 
 /**
@@ -18,7 +26,9 @@ import org.springframework.core.env.Environment;
  */
 @Configuration
 public class PersistenceContext {
+    
     @Bean(destroyMethod = "close")
+    @Primary
     DataSource dataSource(Environment env) {
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
@@ -27,5 +37,24 @@ public class PersistenceContext {
         dataSourceConfig.setPassword(env.getRequiredProperty("db.password"));
  
         return new HikariDataSource(dataSourceConfig);
-}
+    }
+    
+    @Bean
+    @Qualifier("mysql")
+    public DataSource oraclesqlDataSource(Environment env) {
+        ComboPooledDataSource dataSource = new ComboPooledDataSource("primary");
+        try {
+            dataSource.setDriverClass(env.getRequiredProperty("mysql.db.driver"));
+        } catch (PropertyVetoException ex) {
+            Logger.getLogger(PersistenceContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        dataSource.setJdbcUrl(env.getRequiredProperty("mysql.db.url"));
+        dataSource.setUser(env.getRequiredProperty("mysql.db.username"));
+        dataSource.setPassword(env.getRequiredProperty("mysql.db.password"));
+        dataSource.setMinPoolSize(Integer.parseInt(env.getRequiredProperty("c3p0.max_size")));
+        dataSource.setMaxPoolSize(Integer.parseInt(env.getRequiredProperty("c3p0.min_size")));
+        dataSource.setMaxIdleTime(Integer.parseInt(env.getRequiredProperty("c3p0.idle_test_period")));
+
+        return dataSource;
+    }
 }

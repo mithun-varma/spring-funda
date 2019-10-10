@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Version;
 
 /**
  *
@@ -25,6 +26,9 @@ public class Guide implements Serializable{
     private String staffId;
     private String name;
     private String salary;
+    
+    @Version
+    private Integer version;
 
     public long getId() {
         return id;
@@ -56,6 +60,14 @@ public class Guide implements Serializable{
 
     public void setSalary(String salary) {
         this.salary = salary;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
     
     
