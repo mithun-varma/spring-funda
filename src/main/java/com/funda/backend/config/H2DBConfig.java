@@ -79,7 +79,7 @@ public class H2DBConfig {
  
         entityManagerFactoryBean.setJpaProperties(jpaProperties);
  
-
+        entityManagerFactoryBean.setPersistenceUnitName("H2PU");
         
         return entityManagerFactoryBean;
     }
