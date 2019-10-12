@@ -6,6 +6,8 @@
 package com.funda.backend.hibernate.entities;
 
 import java.io.Serializable;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 
@@ -17,15 +19,20 @@ import javax.persistence.MappedSuperclass;
 public class Person implements Serializable{
     
     @Id
-    private long personId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
 
     public long getPersonId() {
-        return personId;
+        return id;
+    }
+    
+    public Person(String name){
+        this.name = name;
     }
 
     public void setPersonId(long personId) {
-        this.personId = personId;
+        this.id = personId;
     }
 
     public String getName() {

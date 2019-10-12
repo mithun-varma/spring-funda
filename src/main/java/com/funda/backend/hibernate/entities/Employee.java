@@ -29,15 +29,28 @@ public class Employee extends Person{
     @NotBlank
     private String company;   
     
-    @Column(nullable = false, updatable = false)
+    private String salary;
+    
+    //@Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
     private Date createdAt;
 
-    @Column(nullable = false)
+    //@Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
     private Date updatedAt;
+    
+    public Employee(String name,String company, String salary){
+        super(name);
+        this.company = company;
+        this.salary = salary;
+    }
+    
+    public Employee(){
+        super("jack");
+    }
+    
     
     public String getCompany() {
         return company;
@@ -62,6 +75,13 @@ public class Employee extends Person{
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
-    
+
+    public String getSalary() {
+        return salary;
+    }
+
+    public void setSalary(String salary) {
+        this.salary = salary;
+    }    
     
 }

@@ -69,7 +69,7 @@ public class JPAService {
             
             txn.begin();
             
-             Book book = new Book();
+            Book book = new Book();
             book.setName(" my dairies");
             book.setAuthor("phani");
 
