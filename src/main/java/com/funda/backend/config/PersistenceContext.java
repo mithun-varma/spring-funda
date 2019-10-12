@@ -41,20 +41,18 @@ public class PersistenceContext {
     
     @Bean
     @Qualifier("mysql")
-    public DataSource oraclesqlDataSource(Environment env) {
-        ComboPooledDataSource dataSource = new ComboPooledDataSource("primary");
-        try {
-            dataSource.setDriverClass(env.getRequiredProperty("mysql.db.driver"));
-        } catch (PropertyVetoException ex) {
-            Logger.getLogger(PersistenceContext.class.getName()).log(Level.SEVERE, null, ex);
-        }
+    public DataSource oraclesqlDataSource(Environment env)  {
+        //ComboPooledDataSource dataSource = new ComboPooledDataSource("primary");
+        HikariConfig dataSource = new HikariConfig();
+        dataSource.setDriverClassName(env.getRequiredProperty("mysql.db.driver"));
         dataSource.setJdbcUrl(env.getRequiredProperty("mysql.db.url"));
-        dataSource.setUser(env.getRequiredProperty("mysql.db.username"));
+        dataSource.setUsername(env.getRequiredProperty("mysql.db.username"));
         dataSource.setPassword(env.getRequiredProperty("mysql.db.password"));
-        dataSource.setMinPoolSize(Integer.parseInt(env.getRequiredProperty("c3p0.max_size")));
+        /*dataSource.setMinPoolSize(Integer.parseInt(env.getRequiredProperty("c3p0.max_size")));
         dataSource.setMaxPoolSize(Integer.parseInt(env.getRequiredProperty("c3p0.min_size")));
-        dataSource.setMaxIdleTime(Integer.parseInt(env.getRequiredProperty("c3p0.idle_test_period")));
+        dataSource.setMaxIdleTime(Integer.parseInt(env.getRequiredProperty("c3p0.idle_test_period")));*/
+        return new HikariDataSource(dataSource);
 
-        return dataSource;
+        //return dataSource;
     }
 }
