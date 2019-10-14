@@ -27,7 +27,7 @@ public class PersistenceContext {
     
     @Bean(destroyMethod = "close")
     @Primary
-    @Qualifier("mysql")
+    @Qualifier("h2")
     DataSource dataSource(Environment env) {
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
