@@ -5,9 +5,8 @@
  */
 package com.funda.backend.config;
 
-import com.funda.backend.hibernate.entities.Employee;
-import com.funda.backend.hibernate.repositories.EmployeeRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.funda.backend.jpa.entities.Employee;
+import com.funda.backend.jpa.repositories.EmployeeRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -21,8 +20,8 @@ import org.springframework.stereotype.Component;
 public class DBInitilizer implements CommandLineRunner {
     private EmployeeRepository empRepository;
     
-    public DBInitilizer(EmployeeRepository bankAccountRepository){
-        this.empRepository = bankAccountRepository;
+    public DBInitilizer(EmployeeRepository empRepository){
+        this.empRepository = empRepository;
     }
     @Override
     public void run(String... strings) throws Exception {

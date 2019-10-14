@@ -19,8 +19,8 @@ import org.springframework.core.env.Environment;
  * @author phanic
  */
 @Configuration
-@PropertySource("file:/opt/${mail.path:cdc}/mail.properties") // if not given will default to application.props
-//@PropertySource("classpath:mail.properties") // if not given will default to application.props
+//@PropertySource("file:/opt/${mail.path:cdc}/mail.properties") // if not given will default to application.props
+@PropertySource("classpath:mail.properties") // if not given will default to application.props
 @ConfigurationProperties(prefix = "mail") // requires setter and getter methods
 public class MailConfig {
     

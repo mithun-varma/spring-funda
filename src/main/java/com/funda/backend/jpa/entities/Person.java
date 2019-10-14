@@ -3,35 +3,36 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.hibernate.entities;
+package com.funda.backend.jpa.entities;
 
 import java.io.Serializable;
-import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import static javax.persistence.GenerationType.IDENTITY;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 /**
  *
  * @author phanic
  */
-@Entity
-public class Country implements Serializable{
- 
+@MappedSuperclass
+public class Person implements Serializable{
+    
     @Id
-    @GeneratedValue(strategy = IDENTITY)
-    private Integer id;
-     
-    @Column(nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private String name;
 
-    public Integer getId() {
+    public long getPersonId() {
         return id;
     }
+    
+    public Person(String name){
+        this.name = name;
+    }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setPersonId(long personId) {
+        this.id = personId;
     }
 
     public String getName() {
@@ -41,6 +42,4 @@ public class Country implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
- 
 }
-
