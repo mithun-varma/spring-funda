@@ -31,7 +31,7 @@
 //@EnableJpaRepositories(
 //    entityManagerFactoryRef = "mysqlEntityManager",
 //    transactionManagerRef = "mysqlTransactionManager",
-//    basePackages = { "com.funda.backend.jpa.repositories" }
+//    basePackages = { "com.funda.backend.hibernate.repositories" }
 //)
 //public class MysqlDBConfig {
 //    

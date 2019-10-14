@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.jpa.controllers;
+package com.funda.backend.hibernate.controllers;
 
 import com.funda.backend.exceptions.ResourceNotFoundException;
-import com.funda.backend.jpa.entities.Employee;
-import com.funda.backend.jpa.entities.Person;
-import com.funda.backend.jpa.repositories.EmployeeRepository;
+import com.funda.backend.hibernate.entities.Employee;
+import com.funda.backend.hibernate.entities.Person;
+import com.funda.backend.hibernate.repositories.EmployeeRepository;
 import java.util.List;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

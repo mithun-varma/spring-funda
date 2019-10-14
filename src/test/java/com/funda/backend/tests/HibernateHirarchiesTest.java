@@ -10,8 +10,8 @@ import com.funda.backend.hibernate.entities.Book;
 import com.funda.backend.hibernate.entities.Employee;
 import com.funda.backend.hibernate.entities.Pen;
 import com.funda.backend.hibernate.repositories.EmployeeRepository;
+
 import javax.sql.DataSource;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
