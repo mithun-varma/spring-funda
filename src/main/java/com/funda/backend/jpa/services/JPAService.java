@@ -3,13 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.hibernate.services;
+package com.funda.backend.jpa.services;
 
-import com.funda.backend.hibernate.entities.Book;
-import com.funda.backend.hibernate.entities.Guide;
-import com.funda.backend.hibernate.entities.MyProduct;
-import com.funda.backend.hibernate.entities.Pen;
-import com.funda.backend.hibernate.entities.Student;
+import com.funda.backend.jpa.entities.Book;
+import com.funda.backend.jpa.entities.Guide;
+import com.funda.backend.jpa.entities.MyProduct;
+import com.funda.backend.jpa.entities.Pen;
+import com.funda.backend.jpa.entities.Student;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
