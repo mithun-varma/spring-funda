@@ -6,12 +6,11 @@
 package com.funda.backend.tests;
 
 import com.funda.backend.DemoApplication;
-import com.funda.backend.hibernate.entities.Book;
-import com.funda.backend.hibernate.entities.Employee;
-import com.funda.backend.hibernate.entities.Pen;
-import com.funda.backend.hibernate.repositories.EmployeeRepository;
+import com.funda.backend.jpa.entities.Book;
+import com.funda.backend.jpa.entities.Employee;
+import com.funda.backend.jpa.entities.Pen;
+import com.funda.backend.jpa.repositories.EmployeeRepository;
 import javax.sql.DataSource;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
