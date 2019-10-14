@@ -22,8 +22,8 @@ CREATE TABLE `employee` (
   `name` varchar(50) DEFAULT NULL,
   `company` varchar(50) DEFAULT NULL,
   `salary` varchar(50) DEFAULT NULL,
-  `created_at` varchar(50) DEFAULT NULL,
-  `updated_at` varchar(50) DEFAULT NULL,
+  `createdat` varchar(50) DEFAULT NULL,
+  `updatedat` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
 );
 

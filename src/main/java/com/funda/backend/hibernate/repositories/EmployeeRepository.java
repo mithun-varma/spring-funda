@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.jpa.repositories;
+package com.funda.backend.hibernate.repositories;
 
-import com.funda.backend.jpa.entities.Employee;
+import com.funda.backend.hibernate.entities.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

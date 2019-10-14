@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
     entityManagerFactoryRef = "h2EntityManager",
     transactionManagerRef = "h2TransactionManager",
-    basePackages = { "com.funda.backend.jpa.repositories" }
+    basePackages = { "com.funda.backend.hibernate.repositories" }
 )
 public class H2DBConfig {
     

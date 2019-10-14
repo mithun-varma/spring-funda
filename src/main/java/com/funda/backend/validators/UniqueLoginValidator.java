@@ -6,7 +6,7 @@
 package com.funda.backend.validators;
 
 import com.funda.backend.annotations.UniqueLogin;
-import com.funda.backend.jpa.repositories.UserRepository;
+import com.funda.backend.hibernate.repositories.UserRepository;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 

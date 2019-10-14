@@ -5,7 +5,7 @@
  */
 package com.funda.backend.controllers;
 
-import com.funda.backend.jpa.repositories.UserRepository;
+import com.funda.backend.hibernate.repositories.UserRepository;
 import com.funda.backend.vo.User;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
