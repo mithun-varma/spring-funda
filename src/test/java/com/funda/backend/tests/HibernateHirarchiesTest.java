@@ -41,7 +41,7 @@ public class HibernateHirarchiesTest {
     
     @Before
     public void setUp() {
-        System.out.println("ready to save");    
+    System.out.println("ready to save");    
     Employee emp = new Employee();
     emp.setPersonId(2);
     emp.setName("mith2");
