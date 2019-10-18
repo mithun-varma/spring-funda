@@ -30,7 +30,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(
     entityManagerFactoryRef = "h2EntityManager",
     transactionManagerRef = "h2TransactionManager",
-    basePackages = { "com.funda.backend.hibernate.repositories" }
+    basePackages = { "com.funda.backend.jpa.repositories" }
 )
 public class H2DBConfig {
     
@@ -43,7 +43,7 @@ public class H2DBConfig {
         LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactoryBean.setDataSource(dataSource);
         entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-        entityManagerFactoryBean.setPackagesToScan("com.funda.backend.hibernate");
+        entityManagerFactoryBean.setPackagesToScan("com.funda.backend.jpa");
         
         Properties jpaProperties = new Properties();
      

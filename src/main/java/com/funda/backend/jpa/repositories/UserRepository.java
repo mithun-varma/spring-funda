@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.hibernate.repositories;
+package com.funda.backend.jpa.repositories;
 
 import com.funda.backend.vo.User;
 import java.util.LinkedList;

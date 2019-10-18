@@ -31,7 +31,7 @@
 //@EnableJpaRepositories(
 //    entityManagerFactoryRef = "mysqlEntityManager",
 //    transactionManagerRef = "mysqlTransactionManager",
-//    basePackages = { "com.funda.backend.hibernate.repositories" }
+//    basePackages = { "com.funda.backend.jpa.repositories" }
 //)
 //public class MysqlDBConfig {
 //    
@@ -45,7 +45,7 @@
 //       LocalContainerEntityManagerFactoryBean entityManagerFactoryBean = new LocalContainerEntityManagerFactoryBean();
 //        entityManagerFactoryBean.setDataSource(mysqlDataSource);
 //        entityManagerFactoryBean.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
-//        entityManagerFactoryBean.setPackagesToScan("com.funda.backend.hibernate");
+//        entityManagerFactoryBean.setPackagesToScan("com.funda.backend.jpa");
 //        
 //        Properties jpaProperties = new Properties();
 //     
