@@ -24,7 +24,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author phanic
  */
 @Repository
-public interface EmployeeRepository extends BaseRepository<Employee, Long> , JpaSpecificationExecutor<Employee>{
+public interface EmployeeRepository extends BaseRepository<Employee, Long> , JpaSpecificationExecutor<Employee> {
     public List<Employee> findByCompany(String company);
      
     @Query("SELECT t.salary FROM Employee t where t.id = :id") 
