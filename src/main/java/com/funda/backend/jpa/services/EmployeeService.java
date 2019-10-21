@@ -14,4 +14,10 @@ import java.util.List;
  */
 public interface EmployeeService {
     List<Employee> findBySearchTerm(String searchTerm);
+    
+    Iterable<Employee> findBySalary(String salary);
+    
+    Iterable<Employee> findByCompanyAndName(String comp, String name);
+    
+
 }

@@ -102,5 +102,15 @@ public class EmployeeEntityController {
         
         List<Employee> jpaEmployees = employeeService.findBySearchTerm("test");
         System.out.println("the employess are "+jpaEmployees.size());
+        
+        Iterable<Employee> qdlsEmployees = employeeService.findBySalary("1200");
+        qdlsEmployees.forEach(action -> {
+            System.out.println(" qdls emp "+action.getName());
+        });
+        
+        Iterable<Employee> qdlsCAndN = employeeService.findByCompanyAndName("HII", "A");
+        qdlsEmployees.forEach(action -> {
+            System.out.println(" qdls C and N "+action.getName());
+        });
     }
 }
