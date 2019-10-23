@@ -5,10 +5,14 @@
  */
 package com.funda.backend.jpa.repositories;
 
+import com.funda.backend.jpa.entities.Employee;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.Repository;
 
 /**
@@ -22,7 +26,8 @@ import org.springframework.data.repository.Repository;
  * instead it should provide implementation to concrete classes
  */
 @NoRepositoryBean
-interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> {
+interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> , JpaSpecificationExecutor<Employee> ,
+        QuerydslPredicateExecutor<Employee>{
  
     void delete(T deleted);
     

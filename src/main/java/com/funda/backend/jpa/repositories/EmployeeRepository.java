@@ -6,25 +6,24 @@
 package com.funda.backend.jpa.repositories;
 
 import com.funda.backend.jpa.entities.Employee;
-import com.funda.backend.jpa.specifications.EmployeeSpecifications;
+import com.funda.backend.jpa.entities.QEmployee;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 import java.util.stream.Stream;
-import org.springframework.data.jpa.domain.Specification;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
  * @author phanic
  */
 @Repository
-public interface EmployeeRepository extends BaseRepository<Employee, Long> , JpaSpecificationExecutor<Employee>{
+public interface EmployeeRepository extends BaseRepository<Employee, Long> {
     public List<Employee> findByCompany(String company);
      
     @Query("SELECT t.salary FROM Employee t where t.id = :id") 
@@ -41,5 +40,4 @@ public interface EmployeeRepository extends BaseRepository<Employee, Long> , Jpa
     
     @Query(name = "Employee.getViaCompany")
     public Optional<Stream<Employee>> getViaCompany(@Param("company") String company);
-      
 }
