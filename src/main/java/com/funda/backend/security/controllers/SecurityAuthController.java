@@ -29,7 +29,8 @@ public class SecurityAuthController {
     
 
     @GetMapping("/checkAuthentication")
-    public void validateRequestParameter(Principal principal ,Authentication authentication ,@CurrentlyLoggedUser AuthUser domainUser) {
+    public void validateRequestParameter(Principal principal ,
+            Authentication authentication ,@CurrentlyLoggedUser AuthUser domainUser) {
         String name = principal.getName();
         System.out.println("the name is "+name+" auth "+authentication.getAuthorities()+" "+authentication.getName()
         +" domain user "+domainUser);
