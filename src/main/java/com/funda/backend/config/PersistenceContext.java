@@ -26,7 +26,7 @@ import org.springframework.core.env.Environment;
 public class PersistenceContext {
     
     @Bean(destroyMethod = "close")
-    @Primary
+    //@Primary
     DataSource dataSource(Environment env) {
         HikariConfig dataSourceConfig = new HikariConfig();
         dataSourceConfig.setDriverClassName(env.getRequiredProperty("db.driver"));
@@ -38,7 +38,7 @@ public class PersistenceContext {
     }
     
     @Bean
-    //@Primary
+    @Primary
     @Qualifier("mysql")
     public DataSource oraclesqlDataSource(Environment env)  {
         //ComboPooledDataSource dataSource = new ComboPooledDataSource("primary");
