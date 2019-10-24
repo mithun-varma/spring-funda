@@ -5,11 +5,13 @@
  */
 package com.funda.backend.security;
 
+import com.funda.backend.security.services.CustomAuthenticationProvider;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -18,6 +20,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
@@ -65,6 +68,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private DataSource dataSource;
+    
+    @Autowired
+    private AuthenticationProvider authenticationProvider;
+    
+    @Autowired
+    private UserDetailsService userDetailsService;
 
     /*@Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
@@ -73,21 +82,31 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
-        /*String encodedPwd = encoder.encode("ace2three");
-        auth.inMemoryAuthentication().withUser("mith").password(encodedPwd).roles("USER");
-        auth.inMemoryAuthentication().withUser("admin").password("{noop}ace2three").roles("ADMIN");*/
-        auth.jdbcAuthentication().dataSource(dataSource);
+        String encodedPwd = encoder.encode("ace2three");
+        //In Memory Auth
+//        auth.inMemoryAuthentication().withUser("mith").password(encodedPwd).roles("USER");
+//        auth.inMemoryAuthentication().withUser("admin").password("{noop}ace2three").roles("ADMIN");
+        //JDBC Auth
+//        auth.jdbcAuthentication().dataSource(dataSource);
+//        .withDefaultSchema().withUser("mith").password(encodedPwd).roles("USER");
+        //Custom Authentication Provider
+//        auth.authenticationProvider(authenticationProvider);
+        //User Details Service
+        auth.userDetailsService(userDetailsService);
 
     }
 
+    //DataSource Configure
     @Override
     protected void configure(HttpSecurity http) throws Exception {
 
         http.csrf().disable()
-        .authorizeRequests()
+        .headers().frameOptions().sameOrigin()
+        .and().authorizeRequests()
         .antMatchers("/home", "/emp/**").permitAll()
         .antMatchers("/cust/**").access("hasRole('ADMIN')")
-        .antMatchers("/auth/**").access("hasRole('ADMIN')")
+        .antMatchers("/student/**").hasAnyAuthority("READ_PRIVILEGE","UPDATE_PRIVILEGE")
+        .antMatchers("/auth/**").hasAnyRole("ADMIN")
         .anyRequest().permitAll()
         .and().exceptionHandling().accessDeniedHandler(getAccessDeniedHandler())
         .authenticationEntryPoint(getBasicAuthEntryPoint())
@@ -106,6 +125,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         //.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .maximumSessions(3).maxSessionsPreventsLogin(true).expiredUrl("/");
     }
+    
+//    In Memory Configuration
 //     protected void configure(HttpSecurity http) throws Exception {
 //            http
 //            .csrf().disable()

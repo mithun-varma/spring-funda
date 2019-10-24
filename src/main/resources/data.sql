@@ -36,3 +36,12 @@ INSERT INTO `person` (name) VALUES ('Techie');
 INSERT INTO `employee` (name,company,salary) VALUES ('Santosh','HII','1000');
 INSERT INTO `employee` (name,company,salary) VALUES ('Kumar','HII','2000');
 
+
+INSERT INTO `users` (username, password, enabled) values ('admin', '{noop}ace2three', true);
+INSERT INTO `users` (username, password, enabled) values ('mith', '{noop}ace2three', true);
+
+INSERT INTO AUTHORITIES (username, authority) values ('admin', 'ROLE_ADMIN');
+INSERT INTO AUTHORITIES (username, authority) values ('mith', 'ROLE_USER');
+
+
+

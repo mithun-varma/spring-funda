@@ -21,39 +21,39 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 @ControllerAdvice
 public class CommonExceptionHandler {
 
-  @ExceptionHandler(ConstraintViolationException.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ResponseBody
-  ResponseDTO onConstraintValidationException(
-     ConstraintViolationException e) {
-      System.out.println("came to constraint vilation");
-     ResponseDTO responseDTO = new ResponseDTO();
-        responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
-        responseDTO.setMessage(e.getMessage());
-        return responseDTO;
-  }
-
-  @ExceptionHandler(MethodArgumentNotValidException.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ResponseBody
-  ResponseDTO onMethodArgumentNotValidException(
-      MethodArgumentNotValidException e) {
-     System.out.println("came to MethodArgumentNotValidException" + e);
+    @ExceptionHandler(ConstraintViolationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    ResponseDTO onConstraintValidationException(
+            ConstraintViolationException e) {
+        System.out.println("came to constraint vilation");
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
         responseDTO.setMessage(e.getMessage());
         return responseDTO;
-  }
-  
-  @ExceptionHandler(Exception.class)
-  @ResponseStatus(HttpStatus.BAD_REQUEST)
-  @ResponseBody
-  ResponseDTO generalException(
-      Exception e) {
+    }
+
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    ResponseDTO onMethodArgumentNotValidException(
+            MethodArgumentNotValidException e) {
+        System.out.println("came to MethodArgumentNotValidException" + e);
+        ResponseDTO responseDTO = new ResponseDTO();
+        responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
+        responseDTO.setMessage(e.getMessage());
+        return responseDTO;
+    }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseBody
+    ResponseDTO generalException(
+            Exception e) {
         System.out.println("came to generalException " + e);
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
         responseDTO.setMessage(e.getMessage());
         return responseDTO;
-  }
+    }
 }

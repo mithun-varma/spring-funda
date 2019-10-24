@@ -44,3 +44,17 @@ CREATE TABLE `student` (
    FOREIGN KEY (guide_id) references guide,
    PRIMARY KEY (`id`)
 );
+
+create table `users`(
+    `username` varchar(50) not null,
+    `password` varchar(50) not null,
+    `enabled` boolean not null,
+     PRIMARY KEY (`username`)
+);
+
+CREATE TABLE `AUTHORITIES` (
+  `username` varchar(20) NOT NULL, 
+  `authority` varchar(50) DEFAULT NULL,
+   FOREIGN KEY (username) references users(username)
+-- constraint fk_authorities_users foreign key(username) references users(username)
+);

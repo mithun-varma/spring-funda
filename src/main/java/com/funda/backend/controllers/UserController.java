@@ -27,6 +27,6 @@ public class UserController {
     @PostMapping(path = "/register", produces = "application/json")
     public void register(@RequestBody @Valid User user) {
         System.out.println("came here");
-        userRepository.save(user);
+        //userRepository.save(user);
     }
 }

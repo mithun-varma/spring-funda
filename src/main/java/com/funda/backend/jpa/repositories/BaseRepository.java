@@ -26,7 +26,7 @@ import org.springframework.data.repository.Repository;
  * instead it should provide implementation to concrete classes
  */
 @NoRepositoryBean
-interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> , JpaSpecificationExecutor<Employee> ,
+public interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> , JpaSpecificationExecutor<Employee> ,
         QuerydslPredicateExecutor<Employee>{
  
     void delete(T deleted);
@@ -36,6 +36,6 @@ interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> ,
     List<T> findAll();
      
     Optional<T> findById(ID id);
-    
+        
     T save(T persisted);
 }
