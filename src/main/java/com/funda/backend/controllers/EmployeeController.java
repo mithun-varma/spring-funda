@@ -5,10 +5,11 @@
  */
 package com.funda.backend.controllers;
 
+import com.funda.backend.jpa.services.EmployeeService;
+import com.funda.backend.propertyeditors.CustomPhoneNumberEditor;
 import com.funda.backend.vo.Employee;
-import com.funda.backend.vo.ExoticType;
-import com.funda.backend.propertyeditors.CustomPhoneEditorRegistrar;
-import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
+import com.funda.backend.vo.Phone;
+import com.funda.backend.vo.PhoneType;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
@@ -43,6 +44,9 @@ public class EmployeeController {
     Validator validator;
     
     @Autowired
+    EmployeeService employeeService;
+    
+    @Autowired
     @Qualifier("phoneRegistrar")
     private PropertyEditorRegistrar customPropertyEditorRegistrar;
 
@@ -53,7 +57,7 @@ public class EmployeeController {
     @InitBinder("employee")
     public void initBinder(WebDataBinder binder) {
         binder.setValidator(validator);
-        //binder.registerCustomEditor(Phone.class, new PhoneNumberEditor());
+        binder.registerCustomEditor(Phone.class, new CustomPhoneNumberEditor());
         //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         //binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
         //binder.registerCustomEditor(ExoticType.class, new ExoticTypeMyEditor());
@@ -79,8 +83,11 @@ public class EmployeeController {
     public String saveEmployeeAction(
             @ModelAttribute("employee") @Validated Employee employee,
             BindingResult bindingResult, Model model) {
+        
         System.out.println("emp doj is "+employee.getDoj());
-        System.out.println("emp phone is "+employee.getPhone());
+        String no =  employee.getPhone() != null ? employee.getPhone().getPhoneNumber() : "NA";
+        PhoneType type = employee.getPhone() != null ? employee.getPhone().getPhoneType(): PhoneType.WORK;
+        System.out.println("emp phone is "+employee.getPhone()+" no "+no+ " type "+type);
         System.out.println("emp phone is "+employee.getExoticType().getExoticTypeName()+" "+employee.getExoticType().getValue()
         +" "+employee.getExoticType().getName());
         if (bindingResult.hasErrors()) {
@@ -90,6 +97,10 @@ public class EmployeeController {
         logger.info("Returning empSaveSuccess.jsp page");
         model.addAttribute("emp", employee);
         emps.put(employee.getId(), employee);
+        Iterable<com.funda.backend.jpa.entities.Employee> qdlsEmployees = employeeService.findBySalary("1200");
+        qdlsEmployees.forEach(action -> {
+            System.out.println(" qdls emp "+action.getName());
+        });
         return "empSaveSuccess";
     }
 }

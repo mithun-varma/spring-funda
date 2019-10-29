@@ -91,8 +91,9 @@ public class EmployeeEntityController {
         Optional<Employee> employeePositionBased = employeeRepository.findBySalaryAndCompanyPositionBased("1000" , "HII");
         System.out.println(" position based "+employeePositionBased.get().getName());
 
-        Optional<Employee> employeeNamed = employeeRepository.findBySalaryAndCompanyNamed("3000" , "HII");
-        System.out.println(" name based "+employeeNamed.get().getName());
+        employeeRepository.findBySalaryAndCompanyNamed("3000" , "HII").forEach(action -> {
+            System.out.println(" name based "+action.getName());
+        });
         
         System.out.println("named query ex");
         
@@ -111,6 +112,10 @@ public class EmployeeEntityController {
         Iterable<Employee> qdlsCAndN = employeeService.findByCompanyAndName("HII", "A");
         qdlsEmployees.forEach(action -> {
             System.out.println(" qdls C and N "+action.getName());
+        });
+        
+        employeeRepository.findByNameContainsAllIgnoreCaseOrderByNameAsc("S").forEach(action -> {
+            System.out.println("the sorted emp is "+action.getName());
         });
     }
 }

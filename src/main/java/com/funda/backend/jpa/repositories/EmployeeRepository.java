@@ -6,15 +6,11 @@
 package com.funda.backend.jpa.repositories;
 
 import com.funda.backend.jpa.entities.Employee;
-import com.funda.backend.jpa.entities.QEmployee;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 import java.util.stream.Stream;
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -36,8 +32,10 @@ public interface EmployeeRepository extends BaseRepository<Employee, Long> {
     public Optional<Employee> findBySalaryAndCompanyPositionBased(String salary, String company);
     
     @Query(value = "SELECT e FROM Employee e where e.salary = :salary AND e.company = :company")
-    public Optional<Employee> findBySalaryAndCompanyNamed(@Param("salary")String salary,@Param("company") String company);
+    public Stream<Employee> findBySalaryAndCompanyNamed(@Param("salary")String salary,@Param("company") String company);
     
     @Query(name = "Employee.getViaCompany")
     public Optional<Stream<Employee>> getViaCompany(@Param("company") String company);
+    
+    public Stream<Employee> findByNameContainsAllIgnoreCaseOrderByNameAsc(String name);
 }

@@ -28,8 +28,15 @@ public class DBInitilizer implements CommandLineRunner {
         this.empRepository.deleteAll();
         Employee emp1 = new Employee("mith","HII","1000");
         Employee emp2 = new Employee("Anna","HII","3000");
+        Employee emp3 = new Employee("Nag","HII","3000");
+        Employee emp4 = new Employee("Sri","HII","3000");
+        Employee emp5 = new Employee("siri","HII","3000");
+
         this.empRepository.save(emp1);
         this.empRepository.save(emp2);
+        this.empRepository.save(emp3);
+        this.empRepository.save(emp4);
+        this.empRepository.save(emp5);        
         System.out.println(" -- Database has been initialized");
     }
 }

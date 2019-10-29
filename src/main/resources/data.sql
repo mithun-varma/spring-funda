@@ -33,10 +33,11 @@ INSERT INTO `person` (name) VALUES ('Kumar');
 INSERT INTO `person` (name) VALUES ('Walking');
 INSERT INTO `person` (name) VALUES ('Techie');
 
-INSERT INTO `employee` (name,company,salary) VALUES ('Santosh','HII','1000');
-INSERT INTO `employee` (name,company,salary) VALUES ('Kumar','HII','2000');
+-- INSERT INTO `employee` (id,name,company,salary) VALUES (1,'Santosh','HII','1000');
+-- INSERT INTO `employee` (id,name,company,salary) VALUES (2,'Kumar','HII','2000');
 
 
+--JDBC AUTHENTICATION
 INSERT INTO `users` (username, password, enabled) values ('admin', '{noop}ace2three', true);
 INSERT INTO `users` (username, password, enabled) values ('mith', '{noop}ace2three', true);
 

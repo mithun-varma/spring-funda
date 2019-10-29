@@ -7,6 +7,7 @@ package com.funda.backend.jpa.services;
 
 import com.funda.backend.jpa.entities.Employee;
 import java.util.List;
+import org.springframework.security.access.annotation.Secured;
 
 /**
  *
