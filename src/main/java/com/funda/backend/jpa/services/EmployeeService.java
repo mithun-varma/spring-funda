@@ -7,7 +7,9 @@ package com.funda.backend.jpa.services;
 
 import com.funda.backend.jpa.entities.Employee;
 import java.util.List;
+import javax.annotation.security.RolesAllowed;
 import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 /**
  *
@@ -16,6 +18,7 @@ import org.springframework.security.access.annotation.Secured;
 public interface EmployeeService {
     List<Employee> findBySearchTerm(String searchTerm);
     
+    @PreAuthorize("hasRole('USER')")
     Iterable<Employee> findBySalary(String salary);
     
     Iterable<Employee> findByCompanyAndName(String comp, String name);

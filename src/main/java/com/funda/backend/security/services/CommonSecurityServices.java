@@ -82,7 +82,7 @@ public class CommonSecurityServices implements
         createRoleIfNotFound("ROLE_USER", Arrays.asList(readPrivilege));
 
         Role adminRole = roleRepository.findByName("ROLE_ADMIN");
-        //Role userRole = roleRepository.findByName("ROLE_USER");
+        Role userRole = roleRepository.findByName("ROLE_USER");
 
         User user = new User();
         user.setUsername("admin");
@@ -92,8 +92,18 @@ public class CommonSecurityServices implements
         user.setEmail("test@test.com");
         user.setRoles(Arrays.asList(adminRole));
         user.setEnabled(true);
+        
+        User user1 = new User();
+        user1.setUsername("mith");
+        user1.setFirstName("phani");
+        user1.setLastName("chekuri");
+        user1.setPassword(encoder.encode("ace2three"));
+        user1.setEmail("mith@test.com");
+        user1.setRoles(Arrays.asList(userRole));
+        user1.setEnabled(true);
+        
         userRepository.save(user);
-
+        userRepository.save(user1);
         alreadySetup = true;
     }
     

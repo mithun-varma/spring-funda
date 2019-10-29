@@ -5,20 +5,15 @@
  */
 package com.funda.backend.controllers;
 
-import com.funda.backend.annotations.CurrentlyLoggedUser;
-import com.funda.backend.vo.AuthUser;
 import com.funda.backend.vo.Customer;
-import java.security.Principal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.validation.Valid;
 import org.apache.log4j.Logger;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 

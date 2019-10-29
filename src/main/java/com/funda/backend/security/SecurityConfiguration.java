@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -44,7 +45,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
  * spring security raises access denied exception handled by
  * ExceptionTranslationFilter , A BasicAuthenticationEntryPoint strategy is also
  * configured into the ExceptionTranslationFilter on startup which responds with
- * Basic Realm which is necessary you can override and implement your own custom
+ * Basic Realm which is necessary, you can override and implement your own custom
  * Entry point strategy by implementing BasicAuthenticationEntryPoint interface
  * for customization of authentication failure response
  *
@@ -64,6 +65,7 @@ import org.springframework.security.web.session.HttpSessionEventPublisher;
  */
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(securedEnabled = true,prePostEnabled = true)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
@@ -104,7 +106,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .headers().frameOptions().sameOrigin()
         .and().authorizeRequests()
         .antMatchers("/home").permitAll()
-        .antMatchers("/emp/**").hasRole("USER")
+        .antMatchers("/emp/**").hasAnyRole("USER")
         .antMatchers("/cust/**").access("hasRole('ADMIN')")
         .antMatchers("/student/**").hasAnyAuthority("READ_PRIVILEGE","UPDATE_PRIVILEGE")
         .antMatchers("/auth/**").hasAnyRole("ADMIN")
