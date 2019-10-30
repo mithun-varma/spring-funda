@@ -25,13 +25,13 @@ import org.springframework.transaction.annotation.Transactional;
  * @author phanic
  */
 @Service
-@Transactional
+@Transactional(value = "h2TransactionManager")
 public class JPAService {
     
     //@PersistenceContext
     //private EntityManager em;
     
-    @PersistenceUnit
+    @PersistenceUnit(unitName = "H2PU")
     private EntityManagerFactory em;
     
     public void saveStudentAndGuide(){

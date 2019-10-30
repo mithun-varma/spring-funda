@@ -19,6 +19,7 @@ import java.util.Optional;
 import java.util.stream.Stream;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -117,5 +118,14 @@ public class EmployeeEntityController {
         employeeRepository.findByNameContainsAllIgnoreCaseOrderByNameAsc("S").forEach(action -> {
             System.out.println("the sorted emp is "+action.getName());
         });
+        
+        employeeRepository.findAll(orderBy()).forEach(action -> {
+            System.out.println("the sorted emp is "+action);
+        });
+
+    }
+    
+    private Sort orderBy() {
+        return new Sort(Sort.Direction.ASC, "name");
     }
 }

@@ -27,7 +27,7 @@ import org.springframework.data.repository.Repository;
  */
 @NoRepositoryBean
 public interface BaseRepository<T, ID extends Serializable> extends Repository<T, ID> , JpaSpecificationExecutor<Employee> ,
-        QuerydslPredicateExecutor<Employee>{
+        QuerydslPredicateExecutor<Employee> , PagingAndSortingRepository<T , ID>{
  
     void delete(T deleted);
     
@@ -37,5 +37,4 @@ public interface BaseRepository<T, ID extends Serializable> extends Repository<T
      
     Optional<T> findById(ID id);
         
-    T save(T persisted);
 }

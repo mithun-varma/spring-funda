@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Stream;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -38,4 +39,5 @@ public interface EmployeeRepository extends BaseRepository<Employee, Long> {
     public Optional<Stream<Employee>> getViaCompany(@Param("company") String company);
     
     public Stream<Employee> findByNameContainsAllIgnoreCaseOrderByNameAsc(String name);
+    
 }

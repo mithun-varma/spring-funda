@@ -18,7 +18,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 public interface EmployeeService {
     List<Employee> findBySearchTerm(String searchTerm);
     
-    @PreAuthorize("hasRole('USER')")
+    //@PreAuthorize("hasRole('USER')")
     Iterable<Employee> findBySalary(String salary);
     
     Iterable<Employee> findByCompanyAndName(String comp, String name);
