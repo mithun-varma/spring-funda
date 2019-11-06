@@ -42,8 +42,14 @@
             <p>
                 Password: <input type="password" name="password" />
             </p>
+            
 
             <input type="submit" value="Login" />
+            
+            <p>
+                <td>Remember Me:</td>
+                <td><input type="checkbox" name="remember-me" /></td>
+            </p>
 
         </form:form>
 

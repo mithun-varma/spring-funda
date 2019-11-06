@@ -118,6 +118,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         .loginPage("/auth_login")
         .loginProcessingUrl("/validate_auth")
         .permitAll()
+        .and().rememberMe().key("newsecret").tokenValiditySeconds(15)
+        //.rememberMe().rememberMeParameter("remember-me-new") for custom parameter name
         .and()
         .logout()
         //.logoutSuccessUrl("/auth_login?logout")(not needed default behaviour)

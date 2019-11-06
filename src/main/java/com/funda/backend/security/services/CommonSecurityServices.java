@@ -102,8 +102,8 @@ public class CommonSecurityServices implements
         user1.setRoles(Arrays.asList(userRole));
         user1.setEnabled(true);
         
-        userRepository.save(user);
-        userRepository.save(user1);
+        createUserIfNotFound(user);
+        createUserIfNotFound(user1);
         alreadySetup = true;
     }
     
@@ -130,6 +130,16 @@ public class CommonSecurityServices implements
             roleRepository.save(role);
         }
         return role;
+    }
+    
+    @Transactional
+    private void createUserIfNotFound(
+            User user) {
+
+        Optional<User> optionalUser = userRepository.findByUsername(user.getUsername());
+        if (!optionalUser.isPresent()) {
+            userRepository.save(user);
+        }
     }
 
     public static void execSql(JdbcTemplate jdbcTemplate, String sql) {

@@ -25,6 +25,7 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `guide`;
 CREATE TABLE `guide` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `staff_id` varchar(50) DEFAULT NULL,
@@ -34,6 +35,7 @@ CREATE TABLE `guide` (
   PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `enroll_id` varchar(50) DEFAULT NULL,
@@ -43,6 +45,7 @@ CREATE TABLE `student` (
    PRIMARY KEY (`id`)
 );
 
+DROP TABLE IF EXISTS `users`;
 create table `users`(
     `username` varchar(50) not null,
     `password` varchar(50) not null,
@@ -50,6 +53,7 @@ create table `users`(
      PRIMARY KEY (`username`)
 );
 
+DROP TABLE IF EXISTS `AUTHORITIES`;
 CREATE TABLE `AUTHORITIES` (
   `username` varchar(20) NOT NULL, 
   `authority` varchar(50) DEFAULT NULL,
