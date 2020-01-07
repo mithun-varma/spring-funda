@@ -46,7 +46,7 @@ public class EmployeeEntityController {
 
     
     @GetMapping("/employees")
-    public List<? extends Person> getAllNotes() {
+    public List<Employee> getAllNotes() {
         return employeeRepository.findAll();
     }
 
@@ -56,7 +56,7 @@ public class EmployeeEntityController {
     }
 
     @GetMapping("/employee/{id}")
-    public Person getEmployeeById(@PathVariable(value = "id") Long noteId) {
+    public Employee getEmployeeById(@PathVariable(value = "id") Long noteId) {
         return employeeRepository.findById(noteId)
                 .orElseThrow(() -> new ResourceNotFoundException("Note", "id", noteId));
     }

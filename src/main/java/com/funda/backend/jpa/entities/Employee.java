@@ -9,6 +9,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,8 +29,12 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 @NamedQuery(name = "Employee.getViaCompany" , query = "SELECT t FROM Employee t WHERE t.company = :company")
 @Table(name = "employee")
 @EntityListeners(AuditingEntityListener.class)
-public class Employee extends Person{
+public class Employee{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    private String name;
     @NotBlank
     private String company;   
     
@@ -44,14 +51,30 @@ public class Employee extends Person{
     private Date updatedAt;
     
     public Employee(String name,String company, String salary){
-        super(name);
+        this.name = name;
         this.company = company;
         this.salary = salary;
     }
     
     public Employee(){
-        super("jack");
     }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     
     
     public String getCompany() {
