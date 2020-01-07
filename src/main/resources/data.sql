@@ -28,10 +28,18 @@ INSERT INTO billionaires (first_name, last_name, career) VALUES
 -- INSERT INTO country (name) VALUES ('USA');
 -- INSERT INTO country (name) VALUES ('Italy');
 
-INSERT INTO `person` (name) VALUES ('Santosh');
-INSERT INTO `person` (name) VALUES ('Kumar');
-INSERT INTO `person` (name) VALUES ('Walking');
-INSERT INTO `person` (name) VALUES ('Techie');
+-- INSERT INTO `person` (name) VALUES ('Santosh');
+-- INSERT INTO `person` (name) VALUES ('Kumar');
+-- INSERT INTO `person` (name) VALUES ('Walking');
+-- INSERT INTO `person` (name) VALUES ('Techie');
+
+
+INSERT INTO person (NAME, LOCATION, BIRTH_DATE ) 
+VALUES('Ranga', 'Hyderabad',sysdate());
+INSERT INTO person (NAME, LOCATION, BIRTH_DATE ) 
+VALUES('James', 'New York',sysdate());
+INSERT INTO person (NAME, LOCATION, BIRTH_DATE ) 
+VALUES('Pieter', 'Amsterdam',sysdate());
 
 -- INSERT INTO `employee` (id,name,company,salary) VALUES (1,'Santosh','HII','1000');
 -- INSERT INTO `employee` (id,name,company,salary) VALUES (2,'Kumar','HII','2000');

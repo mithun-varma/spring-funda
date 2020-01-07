@@ -8,11 +8,21 @@
  * Created: 10 Oct, 2019
  */
 
-DROP TABLE IF EXISTS `person`;
-CREATE TABLE `person` (
-  `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+-- DROP TABLE IF EXISTS `person`;
+-- CREATE TABLE `person` (
+--   `id` bigint(20) NOT NULL AUTO_INCREMENT,
+--   `name` varchar(50) DEFAULT NULL,
+--   PRIMARY KEY (`id`)
+-- );
+
+
+create table person
+(
+   id integer not null AUTO_INCREMENT,
+   name varchar(255) not null,
+   location varchar(255),
+   birth_date timestamp,
+   primary key(id)
 );
 
 

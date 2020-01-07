@@ -10,6 +10,7 @@ import com.funda.backend.jpa.entities.Book;
 import com.funda.backend.jpa.entities.Employee;
 import com.funda.backend.jpa.entities.Pen;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
+import java.util.Optional;
 import javax.sql.DataSource;
 import org.junit.Before;
 import org.junit.Test;
@@ -71,6 +72,8 @@ public class HibernateHirarchiesTest {
         entityManager.persist(book);
         entityManager.persist(pen);
         
+        Optional<Employee> emp = employeeRepository.findById(2L);
+        System.out.println(emp.isEmpty());
 
         
     }

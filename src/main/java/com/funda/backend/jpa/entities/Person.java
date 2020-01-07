@@ -6,6 +6,9 @@
 package com.funda.backend.jpa.entities;
 
 import java.io.Serializable;
+import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -15,20 +18,33 @@ import javax.persistence.MappedSuperclass;
  *
  * @author phanic
  */
-@MappedSuperclass
+@Entity
 public class Person implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
-
-    public long getPersonId() {
-        return id;
+    private String location;
+    @Column(name = "birth_date")
+    private Date birthDate;
+    
+    public Person(){
+        
     }
     
     public Person(String name){
         this.name = name;
+        this.location = null;
+        this.birthDate = null;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
+    public long getId() {
+        return id;
     }
 
     public void setPersonId(long personId) {
@@ -41,5 +57,21 @@ public class Person implements Serializable{
 
     public void setName(String name) {
         this.name = name;
+    }
+    
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public Date getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 }
