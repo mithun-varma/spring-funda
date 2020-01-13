@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
 public class PersonJpaRepository {
 
     // connect to the database
-    @PersistenceContext
+    @PersistenceContext(unitName = "mysqlEntityManager")
     EntityManager entityManager;
 
     public List<Person> findAll() {
@@ -39,8 +39,8 @@ public class PersonJpaRepository {
         return entityManager.merge(person);
     }
 
-    public Person insert(Person person) {
-        return entityManager.merge(person);
+    public void insert(Person person) {
+        entityManager.merge(person);
     }
 
     public void deleteById(int id) {

@@ -43,11 +43,13 @@ public class Employee{
     //@Column(nullable = false, updatable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @CreatedDate
+    @Column(name="created_at")
     private Date createdAt;
 
     //@Column(nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     @LastModifiedDate
+    @Column(name="updated_at")
     private Date updatedAt;
     
     public Employee(String name,String company, String salary){

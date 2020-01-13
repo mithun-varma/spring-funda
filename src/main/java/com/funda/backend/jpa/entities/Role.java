@@ -27,7 +27,7 @@ public class Role implements Serializable{
     private Long id;
 
     private String name;
-    @ManyToMany(mappedBy = "roles")
+    @ManyToMany(mappedBy = "roles") 
     private Collection<User> users;
 
     @ManyToMany

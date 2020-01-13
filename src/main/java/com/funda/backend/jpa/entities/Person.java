@@ -12,7 +12,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.Table;
 
 /**
  *
@@ -37,6 +37,19 @@ public class Person implements Serializable{
         this.name = name;
         this.location = null;
         this.birthDate = null;
+    }
+   
+    public Person(String name, String location, Date birthDate){
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
+    }
+     
+    public Person(long id ,String name, String location, Date birthDate){
+        this.id = id;
+        this.name = name;
+        this.location = location;
+        this.birthDate = birthDate;
     }
 
     public void setId(long id) {

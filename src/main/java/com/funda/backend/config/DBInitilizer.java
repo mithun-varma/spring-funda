@@ -6,14 +6,14 @@
 package com.funda.backend.config;
 
 import com.funda.backend.jpa.entities.Employee;
+import com.funda.backend.jpa.entities.Person;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
-import com.funda.backend.jpa.repositories.PersonJDBCRepository;
 import com.funda.backend.jpa.repositories.PersonJpaRepository;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
 
 /**
  *
@@ -35,7 +35,6 @@ public class DBInitilizer implements CommandLineRunner {
     }
     @Override
     public void run(String... strings) throws Exception {
-        try{
         this.empRepository.deleteAll();
         Employee emp1 = new Employee("mith","HII","1000");
         Employee emp2 = new Employee("Anna","HII","3000");
@@ -54,9 +53,10 @@ public class DBInitilizer implements CommandLineRunner {
         
         //JPA
         System.out.println(" userid from jpa "+personRepo.findById(6L));
+            System.out.println("Inserting -> {}");
+            personRepo.insert(new Person("Tara", "Berlin", new Date()));
+            System.out.println("Update 2 -> {}"+
+            personRepo.update(new Person(2L, "Pieter", "Utrecht", new Date())));
         System.out.println(" -- Database has been initialized thats");
-        }catch(Exception ex){
-            ex.printStackTrace();
-        }
     }
 }

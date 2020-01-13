@@ -15,7 +15,7 @@
 --   PRIMARY KEY (`id`)
 -- );
 
-
+DROP TABLE IF EXISTS `person`;
 create table person
 (
    id integer not null AUTO_INCREMENT,
@@ -32,6 +32,8 @@ CREATE TABLE `employee` (
   `name` varchar(50) DEFAULT NULL,
   `company` varchar(50) DEFAULT NULL,
   `salary` varchar(50) DEFAULT NULL,
+  `created_at` timestamp,
+  `updated_at` timestamp,
   PRIMARY KEY (`id`)
 );
 

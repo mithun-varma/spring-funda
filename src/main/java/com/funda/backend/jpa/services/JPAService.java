@@ -31,7 +31,7 @@ public class JPAService {
     //@PersistenceContext
     //private EntityManager em;
     
-    @PersistenceUnit(unitName = "H2PU")
+    @PersistenceUnit(unitName = "MYSQLPU")
     private EntityManagerFactory em;
     
     public void saveStudentAndGuide(){
