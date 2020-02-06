@@ -9,11 +9,14 @@ import com.funda.backend.jpa.entities.Employee;
 import com.funda.backend.jpa.entities.QEmployee;
 import com.funda.backend.jpa.predicates.EmployeePredicates;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
-import com.funda.backend.jpa.services.EmployeeService;
+import com.funda.backend.jpa.serviceApi.EmployeeService;
 import com.funda.backend.jpa.specifications.EmployeeSpecifications;
 import com.querydsl.core.types.Predicate;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,9 +43,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Transactional(readOnly = true)
     @Override
-    public Iterable<Employee> findBySalary(String salary) {
+    public Page<Employee> findBySalary(String salary) {
         Predicate salgoe = EmployeePredicates.salaryGoe(salary);
-        Iterable<Employee> employees = repository.findAll(salgoe);
+        Pageable firstPageWithTwoElements = PageRequest.of(0, 2);
+
+        Page<Employee> employees = repository.findAll(salgoe, firstPageWithTwoElements);
         return employees;
     }
 

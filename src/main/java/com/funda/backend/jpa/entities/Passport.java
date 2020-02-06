@@ -1,14 +1,18 @@
 package com.funda.backend.jpa.entities;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-public class Passport {
+@Getter @Setter
+public class Passport implements Serializable{
 
     @Id
     @GeneratedValue
@@ -25,26 +29,6 @@ public class Passport {
 
     public Passport(String number) {
         this.number = number;
-    }
-
-    public String getNumber() {
-        return number;
-    }
-
-    public void setNumber(String number) {
-        this.number = number;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     @Override

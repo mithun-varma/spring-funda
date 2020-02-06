@@ -22,7 +22,7 @@ import org.springframework.stereotype.Repository;
 public class PersonJpaRepository {
 
     // connect to the database
-    @PersistenceContext(unitName = "mysqlEntityManager")
+    @PersistenceContext
     EntityManager entityManager;
 
     public List<Person> findAll() {
