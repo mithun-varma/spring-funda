@@ -10,9 +10,13 @@ import com.funda.backend.jpa.entities.Person;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
 import com.funda.backend.jpa.repositories.PersonJpaRepository;
 import java.util.Date;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.ResourceLoader;
+import org.springframework.jdbc.datasource.init.ScriptUtils;
 import org.springframework.stereotype.Component;
 
 /**
@@ -24,6 +28,13 @@ import org.springframework.stereotype.Component;
 public class DBInitilizer implements CommandLineRunner {
     private EmployeeRepository empRepository;
     
+    private final String SAMPLE_DATA = "classpath:testdata.sql";
+
+    @Autowired
+    private ResourceLoader resourceLoader;
+    
+    @Autowired
+    private DataSource datasource;
 //    @Autowired
 //    PersonJDBCRepository personDao;
     
@@ -53,10 +64,13 @@ public class DBInitilizer implements CommandLineRunner {
         
         //JPA
         System.out.println(" userid from jpa "+personRepo.findById(6L));
-            System.out.println("Inserting -> {}");
-            personRepo.insert(new Person("Tara", "Berlin", new Date()));
-            System.out.println("Update 2 -> {}"+
-            personRepo.update(new Person(2L, "Pieter", "Utrecht", new Date())));
+        System.out.println("Inserting -> {}");
+        personRepo.insert(new Person("Tara", "Berlin", new Date()));
+        System.out.println("Update 2 -> {}"+
+        personRepo.update(new Person(2L, "Pieter", "Utrecht", new Date())));
+//        to load data from a file 
+        Resource resource = resourceLoader.getResource(SAMPLE_DATA);
+        ScriptUtils.executeSqlScript(datasource.getConnection(), resource);
         System.out.println(" -- Database has been initialized thats");
     }
 }

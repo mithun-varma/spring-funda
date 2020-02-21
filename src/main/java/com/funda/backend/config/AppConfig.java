@@ -5,18 +5,20 @@
  */
 package com.funda.backend.config;
 
+import com.funda.backend.servlets.SampleServlet;
 import com.funda.backend.vo.Employee;
 import java.sql.SQLException;
+import java.util.Arrays;
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.jdbc.datasource.init.ScriptUtils;
-import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
@@ -34,22 +36,13 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @Configuration
 @ConfigurationProperties(prefix = "conversion")
 public class AppConfig {
-    private final String SAMPLE_DATA = "classpath:testdata.sql";
 
     private Employee employee;
-    
-    @Autowired
-    private DataSource datasource;
-    
-    @Autowired
-    private ResourceLoader resourceLoader;
 
     @PostConstruct
     public void loadDB() throws SQLException {
         String name = employee != null ? employee.getName() : "testing may be ";
         System.out.println("the employee is " + name);
-        Resource resource = resourceLoader.getResource(SAMPLE_DATA);
-        ScriptUtils.executeSqlScript(datasource.getConnection(), resource);
     }
 
     public Employee getEmployee() {
@@ -133,5 +126,13 @@ public class AppConfig {
 //        bean.setValidationMessageSource(messageSource());
 //        return bean;
 //    }
+    
+    @Bean
+    ServletRegistrationBean myServletRegistration () {
+      ServletRegistrationBean srb = new ServletRegistrationBean();
+      srb.setServlet(new SampleServlet());
+      srb.setUrlMappings(Arrays.asList("/ss/*"));
+      return srb;
+    }
 
 }
