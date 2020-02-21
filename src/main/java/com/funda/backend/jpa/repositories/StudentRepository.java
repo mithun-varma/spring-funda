@@ -3,6 +3,7 @@ package com.funda.backend.jpa.repositories;
 import com.funda.backend.jpa.entities.Course;
 import com.funda.backend.jpa.entities.Passport;
 import com.funda.backend.jpa.entities.Student;
+import java.time.LocalDate;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -76,14 +77,24 @@ public class StudentRepository {
         em.persist(student);
     }
 
-    public void insertStudentAndCourse(Student student, Course course) {
-        //Student student = new Student("Jack");
-        //Course course = new Course("Microservices in 100 Steps");
-        student.addCourse(course);
-        course.addStudent(student);
-
-        em.persist(student);
-        em.persist(course);
+    public void insertStudentAndCourse() {
+        Student studentFromDb = em.find(Student.class, 20009L);
+        System.out.println("the course for student is "+studentFromDb.getCourses());
+              
+        //studentFromDb = new Student("Jack Reacher updated morning");
+        Course course = studentFromDb.getCourses().get(0);
+        course.setName(" dont know but updated");
+//        Course course = new Course("Microservices in 100 Steps");
+        studentFromDb.addCourse(course);
+        
+        //course.addStudent(studentFromDb);
+        //merge no longer need added cascade persist , merge
+        //em.merge(course);
+        em.merge(studentFromDb);
+        //em.persist(studentFromDb);
+        System.out.println("the generated course id "+course.getId());
+        Course courseFromDb = em.find(Course.class, 13L);
+        System.out.println("the student for course is "+courseFromDb.getStudents().get(0).getName());
     }
 
 }

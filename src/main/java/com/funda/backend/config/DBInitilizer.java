@@ -5,10 +5,13 @@
  */
 package com.funda.backend.config;
 
+import com.funda.backend.jpa.entities.Course;
 import com.funda.backend.jpa.entities.Employee;
 import com.funda.backend.jpa.entities.Person;
+import com.funda.backend.jpa.entities.Student;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
 import com.funda.backend.jpa.repositories.PersonJpaRepository;
+import com.funda.backend.jpa.repositories.StudentRepository;
 import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -23,6 +26,9 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(name = "app.db-init", havingValue = "true")
 public class DBInitilizer implements CommandLineRunner {
     private EmployeeRepository empRepository;
+    
+    @Autowired
+    private StudentRepository studentRepository;
     
 //    @Autowired
 //    PersonJDBCRepository personDao;
@@ -57,6 +63,8 @@ public class DBInitilizer implements CommandLineRunner {
             personRepo.insert(new Person("Tara", "Berlin", new Date()));
             System.out.println("Update 2 -> {}"+
             personRepo.update(new Person(2L, "Pieter", "Utrecht", new Date())));
+            studentRepository.insertStudentAndCourse();
         System.out.println(" -- Database has been initialized thats");
     }
 }
+ 
