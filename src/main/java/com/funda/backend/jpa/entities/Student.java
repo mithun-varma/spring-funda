@@ -42,14 +42,14 @@ public class Student implements Serializable {
     @OneToOne(fetch = FetchType.LAZY)
     private Passport passport;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinTable(name = "STUDENT_COURSE",
             joinColumns = @JoinColumn(name = "STUDENT_ID"),
             inverseJoinColumns = @JoinColumn(name = "COURSE_ID"))
     private List<Course> courses = new ArrayList<>();
 
     public Student() {
-    }
+    }   
 
     public Student(String name) {
         this.name = name;

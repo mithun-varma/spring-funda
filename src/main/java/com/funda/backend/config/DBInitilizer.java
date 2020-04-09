@@ -5,11 +5,16 @@
  */
 package com.funda.backend.config;
 
+import com.funda.backend.jpa.entities.Course;
 import com.funda.backend.jpa.entities.Employee;
 import com.funda.backend.jpa.entities.Person;
+import com.funda.backend.jpa.entities.Student;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
 import com.funda.backend.jpa.repositories.PersonJpaRepository;
+import com.funda.backend.jpa.repositories.StudentRepository;
 import java.util.Date;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -27,6 +32,12 @@ import org.springframework.stereotype.Component;
 @ConditionalOnProperty(name = "app.db-init", havingValue = "true")
 public class DBInitilizer implements CommandLineRunner {
     private EmployeeRepository empRepository;
+    
+    @Autowired
+    private StudentRepository studentRepository;
+    
+    @PersistenceContext
+    EntityManager em;
     
     private final String SAMPLE_DATA = "classpath:testdata.sql";
 
@@ -63,14 +74,15 @@ public class DBInitilizer implements CommandLineRunner {
         
         
         //JPA
-        System.out.println(" userid from jpa "+personRepo.findById(6L));
+        System.out.println(" userid from jpa "+personRepo.findById(10L));
         System.out.println("Inserting -> {}");
         personRepo.insert(new Person("Tara", "Berlin", new Date()));
         System.out.println("Update 2 -> {}"+
         personRepo.update(new Person(2L, "Pieter", "Utrecht", new Date())));
-//        to load data from a file 
-        Resource resource = resourceLoader.getResource(SAMPLE_DATA);
-        ScriptUtils.executeSqlScript(datasource.getConnection(), resource);
+        studentRepository.insertStudentAndCourse();
+//        Resource resource = resourceLoader.getResource(SAMPLE_DATA);
+//        ScriptUtils.executeSqlScript(datasource.getConnection(), resource);
         System.out.println(" -- Database has been initialized thats");
     }
 }
+ 
