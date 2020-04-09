@@ -5,9 +5,9 @@
  */
 package com.funda.backend.services;
 
-import com.funda.backend.vo.Entity;
-import com.funda.backend.vo.Item;
-import com.funda.backend.vo.Order;
+import com.funda.backend.converters.vo.Entity;
+import com.funda.backend.converters.vo.Item;
+import com.funda.backend.converters.vo.Order;
 import java.math.BigDecimal;
 import java.util.Date;
 import org.springframework.stereotype.Service;

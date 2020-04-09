@@ -6,7 +6,7 @@
 package com.funda.backend.converters;
 
 import com.funda.backend.services.EntityService;
-import com.funda.backend.vo.Entity;
+import com.funda.backend.converters.vo.Entity;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.core.convert.converter.ConverterFactory;
 import org.springframework.stereotype.Component;

@@ -7,8 +7,8 @@ package com.funda.backend.controllers;
 
 import com.funda.backend.config.Modes;
 import com.funda.backend.vo.Employee;
-import com.funda.backend.vo.Entity;
-import com.funda.backend.vo.Item;
+import com.funda.backend.converters.vo.Entity;
+import com.funda.backend.converters.vo.Item;
 import java.util.HashMap;
 import java.util.Map;
 import org.apache.log4j.Logger;
