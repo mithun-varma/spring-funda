@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.jpa.services;
+package com.funda.backend.jpa.serviceApi;
 
 import com.funda.backend.jpa.entities.Book;
 import com.funda.backend.jpa.entities.Guide;
@@ -31,7 +31,7 @@ public class JPAService {
     //@PersistenceContext
     //private EntityManager em;
     
-    @PersistenceUnit(unitName = "MYSQLPU")
+    @PersistenceUnit
     private EntityManagerFactory em;
     
     public void saveStudentAndGuide(){

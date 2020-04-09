@@ -9,10 +9,15 @@ import com.funda.backend.exceptions.ResourceNotFoundException;
 import com.funda.backend.jpa.entities.Employee;
 import com.funda.backend.jpa.entities.Person;
 import com.funda.backend.jpa.repositories.EmployeeRepository;
-import com.funda.backend.jpa.services.EmployeeService;
+import com.funda.backend.jpa.serviceApi.EmployeeService;
 import com.funda.backend.jpa.specifications.EmployeeSpecifications;
+import com.funda.backend.vo.LombTest;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -122,10 +127,18 @@ public class EmployeeEntityController {
         employeeRepository.findAll(orderBy()).forEach(action -> {
             System.out.println("the sorted emp is "+action);
         });
-
+        
     }
     
     private Sort orderBy() {
         return new Sort(Sort.Direction.ASC, "name");
+    }
+    
+    @GetMapping("/employee/lomboktest")
+    public LombTest getLombok() throws MalformedURLException {
+        URL url = new URL("https://www.ace2three.com/");
+        LombTest test = new LombTest(Instant.MIN, "123", Duration.ZERO, url);
+        test.dumbProperty("dumb");
+        return test;
     }
 }

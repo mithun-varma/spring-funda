@@ -4,6 +4,7 @@ import com.funda.backend.jpa.entities.Course;
 import com.funda.backend.jpa.entities.Passport;
 import com.funda.backend.jpa.entities.Student;
 import java.time.LocalDate;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -79,6 +80,8 @@ public class StudentRepository {
 
     public void insertStudentAndCourse() {
         Student studentFromDb = em.find(Student.class, 20009L);
+        List<Student> students = em.createQuery("Select a From Student a",Student.class).getResultList();
+        System.out.println("student is "+students.size());
         System.out.println("the course for student is "+studentFromDb.getCourses());
               
         //studentFromDb = new Student("Jack Reacher updated morning");

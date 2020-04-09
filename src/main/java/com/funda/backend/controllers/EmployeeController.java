@@ -5,7 +5,7 @@
  */
 package com.funda.backend.controllers;
 
-import com.funda.backend.jpa.services.EmployeeService;
+import com.funda.backend.jpa.serviceApi.EmployeeService;
 import com.funda.backend.propertyeditors.CustomPhoneNumberEditor;
 import com.funda.backend.vo.Employee;
 import com.funda.backend.vo.Phone;

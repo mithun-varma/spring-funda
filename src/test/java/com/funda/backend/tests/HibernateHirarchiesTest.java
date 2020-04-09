@@ -85,7 +85,7 @@ public class HibernateHirarchiesTest {
         entityManager.persist(pen);
         
         Optional<Employee> emp = employeeRepository.findById(2L);
-        System.out.println(emp.isEmpty());
+        System.out.println(emp.isPresent());
 
         
     }

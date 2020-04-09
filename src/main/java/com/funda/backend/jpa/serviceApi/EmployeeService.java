@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.jpa.services;
+package com.funda.backend.jpa.serviceApi;
 
 import com.funda.backend.jpa.entities.Employee;
 import java.util.List;
 import javax.annotation.security.RolesAllowed;
+import org.springframework.data.domain.Page;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 
@@ -19,7 +20,7 @@ public interface EmployeeService {
     List<Employee> findBySearchTerm(String searchTerm);
     
     //@PreAuthorize("hasRole('USER')")
-    Iterable<Employee> findBySalary(String salary);
+    Page<Employee> findBySalary(String salary);
     
     Iterable<Employee> findByCompanyAndName(String comp, String name);
     
