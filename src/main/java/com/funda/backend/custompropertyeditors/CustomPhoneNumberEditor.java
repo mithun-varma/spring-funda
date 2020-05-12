@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.propertyeditors;
+package com.funda.backend.custompropertyeditors;
 
 import com.funda.backend.vo.Phone;
 import com.funda.backend.vo.PhoneType;

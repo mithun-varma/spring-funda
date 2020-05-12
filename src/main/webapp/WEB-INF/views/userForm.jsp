@@ -24,7 +24,7 @@
                ${error}
             </c:forEach>
         </c:if>
-        <springForm:form method="POST" modelAttribute="userForm" action="formSubmit">
+        <springForm:form method="POST" modelAttribute="userForm" action="/formSubmit">
             <table>
                 <tr>
                     <td>Email</td>

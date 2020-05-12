@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.controllers;
+package com.funda.backend.converters;
 
 import com.funda.backend.config.Modes;
 import com.funda.backend.vo.Employee;
@@ -30,11 +30,12 @@ public class ConverterController {
     @Autowired
     private ConversionService service;
 
-    
+    //explicit conversion
     public Entity getEntity (String entityId, Class<? extends Entity> type) {
         return service.convert(entityId, type);
     }
     
+    //implicit conversion
     @GetMapping("/string-to-employee")
      public Map<String ,String > getEmployee(@RequestParam("employee") Employee emp) {
          Map<String,String> response = new HashMap<>();
@@ -49,6 +50,7 @@ public class ConverterController {
         return response;
      }
     
+     //implicit conversion
     @GetMapping("string-to-entity")
      public Map<String ,String > getEntity(@RequestParam("id") Entity order) {
          Map<String,String> response = new HashMap<>();
@@ -67,6 +69,7 @@ public class ConverterController {
      public Map<String ,String > testEntiry() {
          Map<String,String> response = new HashMap<>();
          try {
+             //Explicit conversion using conversion service
              //Entity item = getEntity("131", Item.class);
              Item a = service.convert("5000", Item.class);
              Enum m = service.convert("ALPHA", Modes.class);

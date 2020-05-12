@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.controllers;
+package com.funda.backend.custompropertyeditors;
 
 import com.funda.backend.jpa.serviceApi.EmployeeService;
-import com.funda.backend.propertyeditors.CustomPhoneNumberEditor;
+import com.funda.backend.custompropertyeditors.CustomPhoneNumberEditor;
 import com.funda.backend.vo.Employee;
 import com.funda.backend.vo.Phone;
 import com.funda.backend.vo.PhoneType;
@@ -35,9 +35,9 @@ import org.springframework.web.servlet.ModelAndView;
  * @author phanic
  */
 @Controller
-public class EmployeeController {
+public class PropertyEditorController {
 
-    private static final Logger logger = Logger.getLogger(EmployeeController.class);
+    private static final Logger logger = Logger.getLogger(PropertyEditorController.class);
 
     private Map<Integer, Employee> emps = null;
     
@@ -53,7 +53,7 @@ public class EmployeeController {
     @Qualifier("phoneRegistrar")
     private PropertyEditorRegistrar customPropertyEditorRegistrar;
 
-    public EmployeeController() {
+    public PropertyEditorController() {
         emps = new HashMap<>();
     }
     

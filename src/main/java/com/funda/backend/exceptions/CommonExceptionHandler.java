@@ -28,7 +28,7 @@ public class CommonExceptionHandler {
     @ResponseBody
     ResponseDTO onConstraintValidationException(
             ConstraintViolationException e) {
-        System.out.println("came to constraint vilation");
+        System.out.println("came to constraint violation");
         ResponseDTO responseDTO = new ResponseDTO();
         responseDTO.setMessage(HttpStatus.BAD_REQUEST.toString());
         responseDTO.setMessage(e.getMessage());

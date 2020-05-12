@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.config;
+package com.funda.backend.custompropertyeditors;
 
-import com.funda.backend.vo.ExoticType;
-import com.funda.backend.propertyeditors.CustomDateEditorRegistrar;
-import com.funda.backend.propertyeditors.CustomPhoneEditorRegistrar;
-import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
+import com.funda.backend.custompropertyeditors.vo.ExoticType;
+import com.funda.backend.custompropertyeditors.CustomDateEditorRegistrar;
+import com.funda.backend.custompropertyeditors.CustomPhoneEditorRegistrar;
+import com.funda.backend.custompropertyeditors.ExoticTypeMyEditor;
 import java.beans.PropertyEditor;
 import java.util.HashMap;
 import java.util.Map;

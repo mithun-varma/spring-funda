@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.controllers;
+package com.funda.backend.config;
 
-import com.funda.backend.vo.ExoticType;
-import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
+import com.funda.backend.custompropertyeditors.vo.ExoticType;
+import com.funda.backend.custompropertyeditors.ExoticTypeMyEditor;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.InitBinder;
  * @author phanic
  */
 @ControllerAdvice
-public class globalBindings {
+public class GlobalBindings {
     @InitBinder
     public void globalBind(WebDataBinder webBinder){
         webBinder.registerCustomEditor(ExoticType.class, new ExoticTypeMyEditor());

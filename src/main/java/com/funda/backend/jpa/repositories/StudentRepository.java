@@ -81,23 +81,23 @@ public class StudentRepository {
     public void insertStudentAndCourse() {
         Student studentFromDb = em.find(Student.class, 20009L);
         List<Student> students = em.createQuery("Select a From Student a",Student.class).getResultList();
-        System.out.println("student is "+students.size());
-        System.out.println("the course for student is "+studentFromDb.getCourses());
-              
-        //studentFromDb = new Student("Jack Reacher updated morning");
-        Course course = studentFromDb.getCourses().get(0);
-        course.setName(" dont know but updated");
-//        Course course = new Course("Microservices in 100 Steps");
-        studentFromDb.addCourse(course);
-        
-        //course.addStudent(studentFromDb);
-        //merge no longer need added cascade persist , merge
-        //em.merge(course);
-        em.merge(studentFromDb);
-        //em.persist(studentFromDb);
-        System.out.println("the generated course id "+course.getId());
-        Course courseFromDb = em.find(Course.class, 13L);
-        System.out.println("the student for course is "+courseFromDb.getStudents().get(0).getName());
+//        System.out.println("student is "+students.size());
+//        System.out.println("the course for student is "+studentFromDb.getCourses());
+//              
+//        //studentFromDb = new Student("Jack Reacher updated morning");
+//        Course course = studentFromDb.getCourses().get(0);
+//        course.setName(" dont know but updated");
+////        Course course = new Course("Microservices in 100 Steps");
+//        studentFromDb.addCourse(course);
+//        
+//        //course.addStudent(studentFromDb);
+//        //merge no longer need added cascade persist , merge
+//        //em.merge(course);
+//        em.merge(studentFromDb);
+//        //em.persist(studentFromDb);
+//        System.out.println("the generated course id "+course.getId());
+//        Course courseFromDb = em.find(Course.class, 13L);
+//        System.out.println("the student for course is "+courseFromDb.getStudents().get(0).getName());
     }
 
 }

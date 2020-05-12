@@ -6,6 +6,8 @@
 package com.funda.vo;
 
 import com.funda.backend.vo.Phone;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  *
@@ -14,8 +16,12 @@ import com.funda.backend.vo.Phone;
 public class Student {
 
     private String Id;
+    @NotNull(message = "this is not should be not null")
+    @NotBlank
     private String firstName;
     private Phone phone;
+    @NotNull
+    @NotBlank
     private String lastName; // validation done to check if lastname is NULL
     private String standard;
     private String Age;

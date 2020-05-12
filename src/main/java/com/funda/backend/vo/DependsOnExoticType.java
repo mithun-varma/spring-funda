@@ -5,6 +5,8 @@
  */
 package com.funda.backend.vo;
 
+import com.funda.backend.custompropertyeditors.vo.ExoticType;
+
 /**
  *
  * @author phanic

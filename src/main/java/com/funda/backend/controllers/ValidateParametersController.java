@@ -6,8 +6,8 @@
 package com.funda.backend.controllers;
 
 import com.funda.backend.vo.DependsOnExoticType;
-import com.funda.backend.propertyeditors.CustomPhoneNumberEditor;
-import com.funda.backend.propertyeditors.ExoticTypeMyEditor;
+import com.funda.backend.custompropertyeditors.CustomPhoneNumberEditor;
+import com.funda.backend.custompropertyeditors.ExoticTypeMyEditor;
 import java.beans.PropertyEditor;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.Min;
