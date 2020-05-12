@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.funda.backend.config;
+package com.funda.backend.custompropertyeditors;
 
 import com.funda.backend.custompropertyeditors.vo.ExoticType;
 import com.funda.backend.custompropertyeditors.ExoticTypeMyEditor;

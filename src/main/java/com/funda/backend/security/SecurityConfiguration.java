@@ -105,7 +105,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
         .headers().frameOptions().sameOrigin()
         .and().authorizeRequests()
-        .antMatchers("/home").permitAll()
         .antMatchers("/emp/**").hasAnyRole("USER")
         .antMatchers("/cust/**").access("hasRole('ADMIN')")
         .antMatchers("/student/**").hasAnyAuthority("READ_PRIVILEGE","UPDATE_PRIVILEGE")

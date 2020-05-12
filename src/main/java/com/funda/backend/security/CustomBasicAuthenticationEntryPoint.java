@@ -22,7 +22,7 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
     @Override
     public void commence(final HttpServletRequest request,
             final HttpServletResponse response,
-            final AuthenticationException authException) throws IOException, ServletException {
+            final AuthenticationException authException) throws IOException {
         //Authentication failed, send error response.
         System.out.println("came here to unauthorized");
         response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
@@ -37,7 +37,7 @@ public class CustomBasicAuthenticationEntryPoint extends BasicAuthenticationEntr
     }
 
     @Override
-    public void afterPropertiesSet() throws Exception {
+    public void afterPropertiesSet() {
         setRealmName("MY_TEST_REALM");
         super.afterPropertiesSet();
     }

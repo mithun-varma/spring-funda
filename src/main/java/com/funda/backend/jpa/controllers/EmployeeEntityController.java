@@ -131,7 +131,8 @@ public class EmployeeEntityController {
     }
     
     private Sort orderBy() {
-        return new Sort(Sort.Direction.ASC, "name");
+        //return new Sort(Sort.Direction.ASC);
+        return null;
     }
     
     @GetMapping("/employee/lomboktest")
